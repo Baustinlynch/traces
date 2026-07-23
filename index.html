@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Traces</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Jersey+25&family=Raleway:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <div class="solder-grain"></div>
+
+        <a
+            href="about:blank"
+            class="floating-signup hero-anim hero-anim-1"
+            id="floatingSignup"
+            >pls make this button show something idk</a
+        >
+
+        <section class="hero" id="top">
+            <canvas id="pcbCanvas"></canvas>
+            <div class="hero-vignette"></div>
+
+            <div class="hero-content">
+                <h1 class="hero-title hero-anim hero-anim-2">
+                    <span class="title-line">SOLDER MA AHH.</span>
+                    <span class="title-line title-accent"
+                        >LEARN <span class="word-traces">HOW TO TRACE.</span></span
+                    >
+                </h1>
+                <p class="hero-sub hero-anim hero-anim-3">
+                    Traces is a "you ship, we ship" program for Hack Clubs:
+                    design and simulate real circuits in <strong>Wokwi</strong>,
+                    right in the browser, no breadboard, no soldering iron, no
+                    shipping delays. Just you, a schematic, and a blinking LED
+                    that actually works.
+                </p>
+                <div class="hero-actions hero-anim hero-anim-4">
+                    <a href="#apply" class="btn btn-primary"
+                        >Bring Traces to your club</a
+                    >
+                    <a href="#what" class="btn btn-ghost">See how it works ↓</a>
+                </div>
+            </div>
+
+            <img
+                src="assets/sticker.png"
+                alt="A small creature looking a green circuit board"
+                class="hero-sticker hero-anim hero-anim-5"
+            />
+        </section>
+
+        <div class="wave-divider" aria-hidden="true">
+            <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
+                <path
+                    id="wavePath1"
+                    class="wave-path"
+                    d="M0,30 C100,0 200,60 300,30 C400,0 500,60 600,30 C700,0 800,60 900,30 C1000,0 1100,60 1200,30"
+                />
+                <circle r="4.5" class="wave-bubble">
+                    <animateMotion dur="7s" repeatCount="indefinite" begin="0s">
+                        <mpath href="#wavePath1" />
+                    </animateMotion>
+                </circle>
+                <circle r="3.5" class="wave-bubble">
+                    <animateMotion
+                        dur="7s"
+                        repeatCount="indefinite"
+                        begin="-2.3s"
+                    >
+                        <mpath href="#wavePath1" />
+                    </animateMotion>
+                </circle>
+                <circle r="3" class="wave-bubble">
+                    <animateMotion
+                        dur="7s"
+                        repeatCount="indefinite"
+                        begin="-4.6s"
+                    >
+                        <mpath href="#wavePath1" />
+                    </animateMotion>
+                </circle>
+            </svg>
+        </div>
+
+        <section class="section" id="what">
+            <div class="section-inner two-col">
+                <div class="col-text">
+                    <h2 class="h2 reveal">A circuits YSWS, built for clubs.</h2>
+                    <p class="p-lead reveal">
+                        Most YSWS programs ship you a kit and say good luck.
+                        Traces is different, it's made specifically for
+                        <strong>Hack Club - Clubs</strong>, so a whole club can
+                        learn circuit design together, at the same time, without
+                        waiting on the mail for parts.
+                    </p>
+                    <p class="reveal">
+                        Everything happens inside
+                        <a
+                            href="https://wokwi.com"
+                            target="_blank"
+                            rel="noopener"
+                            >Wokwi</a
+                        >, a free in-browser simulator for Arduino, ESP32,
+                        Raspberry Pi Pico, and more. Wire up resistors, sensors,
+                        displays, and microcontrollers, hit run, and watch the
+                        simulation light up instantly. Mess it up? Undo and try
+                        again, nothing actually smokes up.
+                    </p>
+                    <ul class="checklist reveal">
+                        <li>No parts to buy or ship</li>
+                        <li>Runs in any browser, on any laptop</li>
+                        <li>Real schematics, real code, real debugging</li>
+                        <li>Built around your club's own meeting schedule</li>
+                    </ul>
+                </div>
+                <div class="col-visual">
+                    <div class="chip-card reveal">
+                        <div class="chip-card-glow"></div>
+                        <svg
+                            class="chip-card-pcb"
+                            viewBox="0 0 320 320"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <rect
+                                x="6"
+                                y="6"
+                                width="308"
+                                height="308"
+                                rx="14"
+                                class="board-base"
+                            />
+                            <g class="board-traces">
+                                <path d="M30 60 H140 V30" />
+                                <path d="M30 100 H90 V160 H180" />
+                                <path d="M290 50 H210 V120" />
+                                <path d="M290 150 H230 V230 H160" />
+                                <path d="M30 220 H110 V280" />
+                                <path d="M180 280 H260 V200" />
+                            </g>
+                            <g class="board-pads">
+                                <circle cx="30" cy="60" r="4" />
+                                <circle cx="140" cy="30" r="4" />
+                                <circle cx="30" cy="100" r="4" />
+                                <circle cx="180" cy="160" r="4" />
+                                <circle cx="290" cy="50" r="4" />
+                                <circle cx="210" cy="120" r="4" />
+                                <circle cx="290" cy="150" r="4" />
+                                <circle cx="160" cy="230" r="4" />
+                                <circle cx="30" cy="220" r="4" />
+                                <circle cx="110" cy="280" r="4" />
+                                <circle cx="180" cy="280" r="4" />
+                                <circle cx="260" cy="200" r="4" />
+                            </g>
+                            <rect
+                                x="125"
+                                y="125"
+                                width="70"
+                                height="70"
+                                rx="6"
+                                class="board-chip"
+                            />
+                            <g class="board-chip-pins">
+                                <rect x="115" y="138" width="10" height="6" />
+                                <rect x="115" y="155" width="10" height="6" />
+                                <rect x="115" y="172" width="10" height="6" />
+                                <rect x="195" y="138" width="10" height="6" />
+                                <rect x="195" y="155" width="10" height="6" />
+                                <rect x="195" y="172" width="10" height="6" />
+                                <rect x="138" y="115" width="6" height="10" />
+                                <rect x="155" y="115" width="6" height="10" />
+                                <rect x="172" y="115" width="6" height="10" />
+                                <rect x="138" y="195" width="6" height="10" />
+                                <rect x="155" y="195" width="6" height="10" />
+                                <rect x="172" y="195" width="6" height="10" />
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="wave-divider to-dark" aria-hidden="true">
+            <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
+                <path
+                    id="wavePath2"
+                    class="wave-path"
+                    d="M0,30 C100,60 200,0 300,30 C400,60 500,0 600,30 C700,60 800,0 900,30 C1000,60 1100,0 1200,30"
+                />
+                <circle r="4.5" class="wave-bubble">
+                    <animateMotion
+                        dur="7s"
+                        repeatCount="indefinite"
+                        begin="-1.2s"
+                    >
+                        <mpath href="#wavePath2" />
+                    </animateMotion>
+                </circle>
+                <circle r="3.5" class="wave-bubble">
+                    <animateMotion
+                        dur="7s"
+                        repeatCount="indefinite"
+                        begin="-3.5s"
+                    >
+                        <mpath href="#wavePath2" />
+                    </animateMotion>
+                </circle>
+                <circle r="3" class="wave-bubble">
+                    <animateMotion
+                        dur="7s"
+                        repeatCount="indefinite"
+                        begin="-5.8s"
+                    >
+                        <mpath href="#wavePath2" />
+                    </animateMotion>
+                </circle>
+            </svg>
+        </div>
+
+        <section class="section section-dark" id="path">
+            <div class="section-inner">
+                <h2 class="h2 h2-light reveal">
+                    You choose the route the current flows.
+                </h2>
+                <p class="p-lead p-lead-light reveal">
+                    Traces isn't one fixed curriculum, it's a menu. As a club,
+                    you and your members pick which workshops to run and in what
+                    order. Run one a meeting, binge three in a weekend, or pick
+                    just the ones your members are curious about.
+                </p>
+
+                <div class="path-grid">
+                    <div class="path-card reveal">
+                        <div class="path-num">01</div>
+                        <h3>Club leader picks the menu</h3>
+                        <p>
+                            Browse the workshop list, see what gear (if any,
+                            usually none) and time each one needs, and line up
+                            the ones that fit your club.
+                        </p>
+                    </div>
+                    <div class="path-card reveal">
+                        <div class="path-num">02</div>
+                        <h3>Members vote on what's next</h3>
+                        <p>
+                            Got a club full of robotics kids and a few who just
+                            want blinking lights? Mix and match, everyone can be
+                            working on something different.
+                        </p>
+                    </div>
+                    <div class="path-card reveal">
+                        <div class="path-num">03</div>
+                        <h3>Build it live, in Wokwi</h3>
+                        <p>
+                            Each workshop ends with a working simulated circuit
+                            your members designed themselves, ready to share,
+                            remix, or build for real later.
+                        </p>
+                    </div>
+                    <div class="path-card reveal">
+                        <div class="path-num">04</div>
+                        <h3>Ship it, get rewarded</h3>
+                        <p>
+                            Log your club's progress and submit finished
+                            projects the same way you would for any other YSWS,
+                            and get rewarded with club prizes or grants to
+                            actually build your demos!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="wave-divider from-dark" aria-hidden="true">
+            <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
+                <path
+                    id="wavePath3"
+                    class="wave-path"
+                    d="M0,30 C100,0 200,60 300,30 C400,0 500,60 600,30 C700,0 800,60 900,30 C1000,0 1100,60 1200,30"
+                />
+                <circle r="4.5" class="wave-bubble">
+                    <animateMotion
+                        dur="7s"
+                        repeatCount="indefinite"
+                        begin="-0.6s"
+                    >
+                        <mpath href="#wavePath3" />
+                    </animateMotion>
+                </circle>
+                <circle r="3.5" class="wave-bubble">
+                    <animateMotion
+                        dur="7s"
+                        repeatCount="indefinite"
+                        begin="-2.9s"
+                    >
+                        <mpath href="#wavePath3" />
+                    </animateMotion>
+                </circle>
+                <circle r="3" class="wave-bubble">
+                    <animateMotion
+                        dur="7s"
+                        repeatCount="indefinite"
+                        begin="-5.2s"
+                    >
+                        <mpath href="#wavePath3" />
+                    </animateMotion>
+                </circle>
+            </svg>
+        </div>
+
+        <section class="section" id="workshops">
+            <div class="section-inner">
+                <h2 class="h2 reveal">The workshop menu.</h2>
+                <p class="coming-soon reveal">Workshops coming soon!</p>
+            </div>
+        </section>
+
+        <section class="cta" id="apply">
+            <div class="cta-inner">
+                <img src="logo.png" alt="Traces logo" class="cta-logo reveal" />
+                <h2 class="h2 cta-title reveal">Ready to close the loop?</h2>
+                <p class="cta-sub reveal">
+                    Traces is open to any registered Hack Club. Bring it up at
+                    your next meeting, pick your first workshop, and get your
+                    club building circuits this week.
+                </p>
+                <a
+                    href="https://hackclub.com/clubs"
+                    class="btn btn-primary btn-large reveal"
+                    target="_blank"
+                    rel="noopener"
+                    >Start a Hack Club →</a
+                >
+                <p class="cta-foot reveal">
+                    Already running a club? Drop into
+                    <a
+                        href="https://hackclub.slack.com"
+                        target="_blank"
+                        rel="noopener"
+                        >#clubs on Slack</a
+                    >
+                    and ask about Traces.
+                </p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="footer-inner">
+                <img src="logo.png" alt="Traces" class="footer-logo" />
+                <p>
+                    Traces is a Hack Club Clubs YSWS. Made by teens, for teens,
+                    with a soldering iron we promise not to plug in.
+                </p>
+                <div class="footer-links">
+                    <a
+                        href="https://hackclub.com"
+                        target="_blank"
+                        rel="noopener"
+                        >Hack Club</a
+                    >
+                    <a href="https://wokwi.com" target="_blank" rel="noopener"
+                        >Wokwi</a
+                    >
+                    <a
+                        href="https://hackclub.com/clubs"
+                        target="_blank"
+                        rel="noopener"
+                        >Clubs</a
+                    >
+                    <a
+                        href="https://hackclub.slack.com"
+                        target="_blank"
+                        rel="noopener"
+                        >Slack</a
+                    >
+                </div>
+            </div>
+        </footer>
+
+        <script src="script.js"></script>
+    </body>
+</html>
