@@ -1,5 +1,5 @@
 <script>
-  import Header from './Header.svelte';
+
   import Footer from './Footer.svelte';
   import { renderMarkdown } from '../lib/markdown.js';
 
@@ -12,7 +12,7 @@
   $: renderedContent = activeDoc ? renderMarkdown(activeDoc.content, docs) : '<p>No docs found.</p>';
 </script>
 
-<Header isDocs={true} />
+
 
 <section class="docs-shell">
   <aside class="docs-sidebar">

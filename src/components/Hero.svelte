@@ -9,7 +9,7 @@
 
   <div class="hero-content">
     <h1 class="hero-title">
-      <span class="title-line">TRACE THE LINE.</span>
+      <span class="title-line">TRACE THE TRACE.</span>
       <span class="title-line title-accent">SHIP THE <span class="word-traces">CIRCUIT.</span></span>
     </h1>
     <p class="hero-sub">
