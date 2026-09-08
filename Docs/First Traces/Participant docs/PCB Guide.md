@@ -1,0 +1,2 @@
+To make your circuit board (PCB) we are going to be using a website called EasyEDA.
+First, make an account [here](https://easyeda.com/register), then once you have done that, open [this]() link and create a copy of the project using the 
