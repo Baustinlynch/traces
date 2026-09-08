@@ -1,5 +1,4 @@
 <script>
-
   import Hero from './Hero.svelte';
   import SectionBreaker from './SectionBreaker.svelte';
   import AboutSection from './AboutSection.svelte';
@@ -12,7 +11,6 @@
   export let timelineItems = [];
   export let footerLinks = [];
 </script>
-
 
 <Hero backgroundImage={assets.bgImage} actions={heroActions} />
 <SectionBreaker lineImage={assets.sectionBreakerLineImage} breakerImage={assets.sectionBreakerImage} />

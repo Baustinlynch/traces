@@ -1,5 +1,4 @@
 <script>
-
   import Footer from './Footer.svelte';
   import { renderMarkdown } from '../lib/markdown.js';
 
@@ -8,11 +7,14 @@
   export let logoImage;
   export let footerLinks = [];
 
+  $: visibleDocs = docs.filter(doc => !doc.hidden);
   $: activeDoc = docs.find((doc) => doc.slug === activeSlug) ?? docs[0];
   $: renderedContent = activeDoc ? renderMarkdown(activeDoc.content, docs) : '<p>No docs found.</p>';
+
+  $: currentIndex = visibleDocs.findIndex(doc => doc.slug === activeSlug);
+  $: prevDoc = currentIndex > 0 ? visibleDocs[currentIndex - 1] : null;
+  $: nextDoc = currentIndex < visibleDocs.length - 1 ? visibleDocs[currentIndex + 1] : null;
 </script>
-
-
 
 <section class="docs-shell">
   <aside class="docs-sidebar">
@@ -22,7 +24,7 @@
       <p class="docs-description">Rendered from the markdown files in <code>Docs/</code> with an Obsidian-inspired reading layout.</p>
 
       <nav class="docs-nav" aria-label="Docs navigation">
-        {#each docs as doc}
+        {#each docs.filter(doc => !doc.hidden) as doc}
           <a href={`#/docs/${doc.slug}`} class:active={activeDoc && doc.slug === activeDoc.slug}>
             <span class="doc-group">{doc.group}</span>
             <strong>{doc.title}</strong>
@@ -41,6 +43,25 @@
           <h2>{activeDoc.title}</h2>
         </header>
         {@html renderedContent}
+
+        {#if visibleDocs.length > 1}
+          <nav class="docs-pagination">
+            {#if prevDoc}
+              <a href={`#/docs/${prevDoc.slug}`} class="pagination-btn">
+                <span>←</span> {prevDoc.title}
+              </a>
+            {:else}
+              <div class="pagination-btn disabled"></div>
+            {/if}
+            {#if nextDoc}
+              <a href={`#/docs/${nextDoc.slug}`} class="pagination-btn">
+                {nextDoc.title} <span>→</span>
+              </a>
+            {:else}
+              <div class="pagination-btn disabled"></div>
+            {/if}
+          </nav>
+        {/if}
       </article>
     {:else}
       <article class="docs-article markdown-body">

@@ -14,15 +14,29 @@
     --obsidian-panel: #1d1d1b;
     --obsidian-panel-soft: #232320;
     --obsidian-text: #dcddde;
+    --obsidian-title: #ffffff;
     --obsidian-muted: #9b9c97;
     --obsidian-accent: #7aa2ff;
     --obsidian-border: rgba(255, 255, 255, 0.08);
+    --obsidian-code-bg: #101010;
 
     --font-display: "Jersey 20", "Courier New", monospace;
     --font-round: "Fredoka", system-ui, sans-serif;
     --font-docs: Inter, ui-sans-serif, system-ui, sans-serif;
 
     --maxw: 1180px;
+}
+
+.light-theme {
+    --obsidian-bg: #f5f5f2;
+    --obsidian-panel: #ffffff;
+    --obsidian-panel-soft: #fcfcfc;
+    --obsidian-text: #2e2e2c;
+    --obsidian-title: #1a1a1a;
+    --obsidian-muted: #6e6e6a;
+    --obsidian-accent: #3a6ccf;
+    --obsidian-border: rgba(0, 0, 0, 0.08);
+    --obsidian-code-bg: #efefed;
 }
 
 * {
@@ -500,14 +514,15 @@ img {
     min-height: 100vh;
     display: grid;
     grid-template-columns: 320px minmax(0, 1fr);
-    background: var(--obsidian-bg);
-    color: var(--obsidian-text);
+    background: var(--cream-warm);
+    color: var(--ink-soft);
     padding-top: 40px;
 }
 
 .docs-sidebar {
-    border-right: 1px solid var(--obsidian-border);
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent), var(--obsidian-panel);
+    border-right: 1px solid var(--gold-dark);
+    background: var(--cream);
+    opacity: 0.9;
 }
 
 .docs-sidebar-inner {
@@ -518,25 +533,28 @@ img {
 
 .docs-eyebrow {
     margin: 0 0 8px;
-    color: var(--obsidian-muted);
+    color: var(--ink-soft);
     text-transform: uppercase;
     letter-spacing: 0.08em;
     font-size: 0.74rem;
     font-weight: 700;
+    opacity: 0.7;
 }
 
 .docs-title {
     margin: 0;
-    color: #fff;
+    color: var(--ink);
+    font-family: var(--font-display);
     font-size: 1.9rem;
     line-height: 1.1;
 }
 
 .docs-description {
     margin: 14px 0 24px;
-    color: var(--obsidian-muted);
+    color: var(--ink-soft);
     font-size: 0.96rem;
     line-height: 1.6;
+    opacity: 0.8;
 }
 
 .docs-description code,
@@ -556,20 +574,22 @@ img {
     padding: 12px 14px;
     border-radius: 12px;
     border: 1px solid transparent;
-    color: var(--obsidian-text);
+    color: var(--ink-soft);
     background: transparent;
 }
 
 .docs-nav a:hover,
 .docs-nav a.active {
     text-decoration: none;
-    background: var(--obsidian-panel-soft);
-    border-color: var(--obsidian-border);
+    background: rgba(78, 110, 54, 0.1);
+    border-color: rgba(78, 110, 54, 0.2);
+    color: var(--green-dark);
 }
 
 .doc-group {
-    color: var(--obsidian-muted);
+    color: var(--ink-soft);
     font-size: 0.8rem;
+    opacity: 0.6;
 }
 
 .docs-main {
@@ -578,29 +598,68 @@ img {
 }
 
 .docs-breadcrumb {
-    color: var(--obsidian-muted);
+    color: var(--ink-soft);
     font-size: 0.82rem;
     margin-bottom: 18px;
+    opacity: 0.6;
 }
 
 .docs-article {
     max-width: 860px;
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid var(--obsidian-border);
+    background: var(--cream);
+    border: 1px solid var(--gold-dark);
     border-radius: 22px;
     padding: clamp(20px, 4vw, 40px);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    display: flex;
+    flex-direction: column;
+}
+
+.docs-pagination {
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--gold-dark);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.pagination-btn {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    border-radius: 12px;
+    background: var(--cream-warm);
+    border: 1px solid var(--gold-dark);
+    color: var(--ink-soft);
+    font-family: var(--font-round);
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.pagination-btn:hover {
+    background: var(--gold);
+    color: var(--ink);
+    transform: translateY(-2px);
+}
+
+.pagination-btn.disabled {
+    opacity: 0;
+    pointer-events: none;
 }
 
 .docs-article-header {
     margin-bottom: 24px;
     padding-bottom: 18px;
-    border-bottom: 1px solid var(--obsidian-border);
+    border-bottom: 1px solid var(--gold-dark);
 }
 
 .docs-article-header h2 {
     margin: 0;
-    color: #fff;
+    color: var(--ink);
+    font-family: var(--font-display);
     font-size: clamp(2rem, 4vw, 3rem);
     line-height: 1;
 }
@@ -617,7 +676,7 @@ img {
 .markdown-body h4,
 .markdown-body h5,
 .markdown-body h6 {
-    color: #fff;
+    color: var(--ink);
     line-height: 1.2;
     margin: 1.8em 0 0.7em;
 }
@@ -631,7 +690,7 @@ img {
 .markdown-body p,
 .markdown-body ul {
     margin: 0 0 1.1em;
-    color: var(--obsidian-text);
+    color: var(--ink-soft);
 }
 
 .markdown-body ul {
@@ -643,25 +702,26 @@ img {
 }
 
 .markdown-body a {
-    color: var(--obsidian-accent);
+    color: var(--green-dark);
 }
 
 .markdown-body code {
-    background: rgba(255, 255, 255, 0.06);
+    background: var(--cream-warm);
     padding: 0.18em 0.42em;
     border-radius: 6px;
     font-size: 0.92em;
+    border: 1px solid var(--gold-dark);
 }
 
 .markdown-body strong {
-    color: #fff;
+    color: var(--ink);
 }
 
 .markdown-body blockquote {
     margin: 1.2rem 0;
     padding: 0.85rem 1rem;
-    border-left: 3px solid rgba(255, 255, 255, 0.16);
-    background: rgba(255, 255, 255, 0.03);
+    border-left: 3px solid var(--gold-dark);
+    background: rgba(0, 0, 0, 0.02);
     border-radius: 0 12px 12px 0;
 }
 
@@ -676,12 +736,12 @@ img {
 .markdown-body td {
     text-align: left;
     padding: 0.8rem 0.9rem;
-    border: 1px solid var(--obsidian-border);
+    border: 1px solid var(--gold-dark);
 }
 
 .markdown-body th {
-    color: #fff;
-    background: rgba(255, 255, 255, 0.04);
+    color: var(--ink);
+    background: var(--cream-warm);
 }
 
 .markdown-body pre {
@@ -689,8 +749,9 @@ img {
     margin: 1.2rem 0;
     padding: 1rem;
     border-radius: 14px;
-    background: #101010;
-    border: 1px solid var(--obsidian-border);
+    background: var(--obsidian-panel);
+    color: var(--obsidian-text);
+    border: 1px solid var(--gold-dark);
 }
 
 .markdown-body pre code {
@@ -701,27 +762,28 @@ img {
 
 .markdown-body .task-list-item-checkbox {
     margin-right: 0.55rem;
-    accent-color: var(--obsidian-accent);
+    accent-color: var(--green-dark);
 }
 
 .markdown-body .internal-link {
-    color: #9ec1ff;
+    color: var(--green-dark);
+    text-decoration: underline;
 }
 
 .callout {
     margin: 1.2rem 0;
     border-radius: 16px;
-    border: 1px solid var(--obsidian-border);
+    border: 1px solid var(--gold-dark);
     overflow: hidden;
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(0, 0, 0, 0.02);
 }
 
 .callout-title {
     padding: 0.8rem 1rem;
     font-weight: 700;
-    color: #fff;
+    color: var(--ink);
     text-transform: capitalize;
-    border-bottom: 1px solid var(--obsidian-border);
+    border-bottom: 1px solid var(--gold-dark);
 }
 
 .callout-body {
@@ -729,23 +791,23 @@ img {
 }
 
 .callout-note .callout-title {
-    background: rgba(122, 162, 255, 0.15);
+    background: rgba(78, 110, 54, 0.05);
 }
 
 .callout-warning .callout-title,
 .callout-caution .callout-title {
-    background: rgba(248, 186, 90, 0.16);
+    background: rgba(248, 186, 90, 0.1);
 }
 
 .callout-tip .callout-title,
 .callout-success .callout-title {
-    background: rgba(78, 110, 54, 0.28);
+    background: rgba(78, 110, 54, 0.1);
 }
 
 .callout-danger .callout-title,
 .callout-error .callout-title,
 .callout-fail .callout-title {
-    background: rgba(255, 107, 107, 0.18);
+    background: rgba(255, 107, 107, 0.05);
 }
 
 @media (max-width: 1000px) {
@@ -764,20 +826,6 @@ img {
 }
 
 @media (max-width: 880px) {
-    .site-header {
-        padding: 14px 16px;
-    }
-
-    .site-header-inner {
-        border-radius: 24px;
-        align-items: flex-start;
-        flex-direction: column;
-    }
-
-    .site-nav {
-        justify-content: flex-start;
-    }
-
     .two-col {
         grid-template-columns: 1fr;
     }

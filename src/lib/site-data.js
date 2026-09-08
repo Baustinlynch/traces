@@ -1,13 +1,13 @@
-import bgImage from '../../assets/bg.png';
+import backgroundImage from '../../assets/background.png';
 import logoImage from '../../assets/logo.png';
-import sectionBreakerImage from '../../assets/sectionbreaker.png';
-import sectionBreakerLineImage from '../../assets/sectionbreaker-line.png';
-import stickerImage from '../../assets/sticker-2.png';
+import sectionBreakerImage from '../../assets/section-breaker.png';
+import sectionBreakerLineImage from '../../assets/section-breaker-line.png';
+import stickerImage from '../../assets/sticker-primary.png';
 import organiserDocRaw from '../../Docs/First Traces/Leader Docs/Organiser main doc.md?raw';
 import pcbGuideRaw from '../../Docs/First Traces/Participant docs/PCB Guide.md?raw';
 
 export const assets = {
-  bgImage,
+  bgImage: backgroundImage,
   logoImage,
   sectionBreakerImage,
   sectionBreakerLineImage,
@@ -69,7 +69,8 @@ export const docs = [
     title: 'Organiser main doc',
     group: 'Leader Docs',
     path: 'Docs/First Traces/Leader Docs/Organiser main doc.md',
-    content: organiserDocRaw
+    content: organiserDocRaw,
+    hidden: true
   },
   {
     slug: 'first-traces-pcb-guide',

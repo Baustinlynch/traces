@@ -202,15 +202,21 @@
       "bases:Create new base": false
     }
   },
-  "active": "a5c79a14b6cce1a6",
+  "active": "b47d85d930e92701",
   "lastOpenFiles": [
-    "Docs",
+    "src/app.css.tmp.48003.e8e567ea6af0",
+    "src/components/DocsPage.svelte.tmp.48003.8d1e00cc392e",
+    "src/components/DocsPage.svelte.tmp.48003.e8e100defaac",
+    "src/components/LandingPage.svelte.tmp.48003.c8648c2ad9c9",
+    "src/components/LandingPage.svelte.tmp.48003.b01c28b9d6b0",
+    "src/components/DocsPage.svelte.tmp.48003.4a9d9163094a",
+    "src/components/DocsPage.svelte.tmp.48003.2724373454a2",
+    "src/components/Footer.svelte.tmp.48003.bc52fac6b293",
+    "src/App.svelte.tmp.48003.926a62bd182b",
+    "src/components/ThemeToggle.svelte",
+    "src/components/ThemeToggle.svelte.tmp.48003.ce80baf09642",
     "Docs/First Traces/Leader Docs/Organiser main doc.md",
     "easyeda.com.md",
-    "Docs/First Traces/Participant docs/PCB Guide.md",
-    "Docs/First Traces/Leader Docs",
-    "Docs/First Traces/Participant docs",
-    "Untitled 1",
-    "Docs/First Traces"
+    "Docs/First Traces/Participant docs/PCB Guide.md"
   ]
 }
