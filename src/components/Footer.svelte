@@ -7,8 +7,10 @@
   <div class="footer-inner">
     <img src={logoImage} alt="Traces" class="footer-logo" />
     <p>
-      Traces is a Hack Club Clubs YSWS. Follow the guide, build it in Wokwi, and we'll fund the
-      parts to make it real. Made by teens, for teens.
+      Traces is a Hack Club Clubs YSWS.
+    </p>
+    <p>
+        Made by teens, for teens.
     </p>
     <div class="footer-links">
       {#each links as link}

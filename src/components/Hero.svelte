@@ -9,11 +9,11 @@
 
   <div class="hero-content">
     <h1 class="hero-title">
-      <span class="title-line">TRACE THE TRACE.</span>
-      <span class="title-line title-accent">SHIP THE <span class="word-traces">CIRCUIT.</span></span>
+      <span class="title-line">THE FIRST HARDWARE SERIES</span>
+      <span class="title-line title-accent">*for clubs </span>
     </h1>
     <p class="hero-sub">
-      Traces is a <strong>you ship, we ship</strong> program for Hack Clubs: follow the guide,
+      Traces is a <strong>you ship, we ship</strong> hardware series for clubs: follow the guide,
       design and simulate real circuits in Wokwi, add your own components, and we'll
       <strong>grant you the parts</strong> to build it for real. No breadboard required to get
       started, just a browser and an idea.

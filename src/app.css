@@ -191,14 +191,16 @@ img {
     margin: 0 0 24px;
     text-shadow: 0 3px 26px rgba(0, 0, 0, 0.45);
     white-space: nowrap;
+    text-align: center;
 }
 
 .title-line {
-    display: block;
+    /*display: block;*/
 }
 
 .title-accent {
     color: var(--gold);
+    font-size: 1rem;
 }
 
 .word-traces {
