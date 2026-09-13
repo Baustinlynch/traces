@@ -83,6 +83,16 @@
   />
 </svelte:head>
 
+<!-- Hidden SVG filter for hand-drawn button edges -->
+<svg style="position:absolute;width:0;height:0;overflow:hidden;pointer-events:none" aria-hidden="true">
+  <defs>
+    <filter id="hand-drawn" x="-8%" y="-15%" width="125%" height="145%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.025 0.03" numOctaves="2" seed="12" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+</svg>
+
 <Header page={route.page} {theme} onToggle={toggleTheme} />
 
 {#if route.page === 'docs'}
