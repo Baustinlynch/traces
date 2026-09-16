@@ -1,6 +1,6 @@
 <script>
   import ThemeToggle from './ThemeToggle.svelte';
-  import logoImage from '../../assets/logo.png';
+  const logoImage = 'https://cdn.hackclub.com/01a0aabc-ffa1-714d-b041-6cd0e01ce1ce/logo.png';
 
   let { page = 'home', theme = 'dark', onToggle = () => {} } = $props();
 </script>

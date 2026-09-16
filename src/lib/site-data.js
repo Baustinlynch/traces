@@ -1,8 +1,8 @@
-import backgroundImage from '../../assets/background.png';
-import logoImage from '../../assets/logo.png';
-import sectionBreakerImage from '../../assets/section-breaker.png';
-import sectionBreakerLineImage from '../../assets/section-breaker-line.png';
-import stickerImage from '../../assets/sticker-primary.png';
+const backgroundImage = 'https://cdn.hackclub.com/01a0aabc-f8d1-709f-b0b3-aba661d8a59f/background.png';
+const logoImage = 'https://cdn.hackclub.com/01a0aabc-ffa1-714d-b041-6cd0e01ce1ce/logo.png';
+const sectionBreakerImage = 'https://cdn.hackclub.com/01a0aabd-0421-76a6-b795-ee5cfad6d116/section-breaker.png';
+const sectionBreakerLineImage = 'https://cdn.hackclub.com/01a0aabc-fc95-71d4-8823-ce7a5add7bc2/section-breaker-line.png';
+const stickerImage = 'https://cdn.hackclub.com/01a0aabc-7701-7153-a0cd-9d976d331e3a/sticker-primary.png';
 import organiserDocRaw from '../../Docs/First Traces/Leader Docs/Organiser main doc.md?raw';
 import pcbGuideRaw from '../../Docs/First Traces/Participant docs/PCB Guide.md?raw';
 
