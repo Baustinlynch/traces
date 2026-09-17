@@ -3,8 +3,29 @@ const logoImage = 'https://cdn.hackclub.com/01a0aabc-ffa1-714d-b041-6cd0e01ce1ce
 const sectionBreakerImage = 'https://cdn.hackclub.com/01a0aabd-0421-76a6-b795-ee5cfad6d116/section-breaker.png';
 const sectionBreakerLineImage = 'https://cdn.hackclub.com/01a0aabc-fc95-71d4-8823-ce7a5add7bc2/section-breaker-line.png';
 const stickerImage = 'https://cdn.hackclub.com/01a0aabc-7701-7153-a0cd-9d976d331e3a/sticker-primary.png';
-import organiserDocRaw from '../../Docs/First Traces/Leader Docs/Organiser main doc.md?raw';
-import pcbGuideRaw from '../../Docs/First Traces/Participant docs/PCB Guide.md?raw';
+const docModules = import.meta.glob('/Docs/**/*.md', {
+  query: '?raw',
+  import: 'default',
+  eager: true
+});
+
+function slugify(str) {
+  return str
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '');
+}
+
+function docTitleAndOrder(base) {
+  const match = base.match(/^(\d+)\s*[-_.]?\s*(.+)$/);
+  if (match) {
+    return { order: Number(match[1]), title: match[2].trim() };
+  }
+  return { order: null, title: base.trim() };
+}
 
 export const assets = {
   bgImage: backgroundImage,
@@ -63,20 +84,31 @@ export const footerLinks = [
   { href: 'https://hackclub.slack.com', label: 'Slack' }
 ];
 
-export const docs = [
-  {
-    slug: 'first-traces-organiser-main-doc',
-    title: 'Organiser main doc',
-    group: 'Leader Docs',
-    path: 'Docs/First Traces/Leader Docs/Organiser main doc.md',
-    content: organiserDocRaw,
-    hidden: true
-  },
-  {
-    slug: 'first-traces-pcb-guide',
-    title: 'PCB Guide',
-    group: 'Participant docs',
-    path: 'Docs/First Traces/Participant docs/PCB Guide.md',
-    content: pcbGuideRaw
-  }
-];
+const MAX_ORDER = -1;
+
+export const docs = Object.entries(docModules)
+  .map(([fullPath, content]) => {
+    const segments = fullPath.split('/').filter(Boolean);
+    const docsIndex = segments.indexOf('Docs');
+    const rel = segments.slice(docsIndex + 1);
+    const fileName = rel.pop();
+    const program = rel.shift();
+    const base = fileName.replace(/\.md$/, '');
+    const hidden = base.startsWith('_');
+    const clean = hidden ? base.slice(1) : base;
+    const { order, title } = docTitleAndOrder(clean);
+    const leader = rel.some((dir) => /leader/i.test(dir));
+    const subRoute = leader ? 'Leader/' : '';
+    const group = rel.length ? rel[rel.length - 1] : program;
+    return {
+      slug: `${slugify(program)}-${slugify(title)}`,
+      program,
+      group,
+      title,
+      order: order ?? MAX_ORDER,
+      hidden,
+      route: `docs/${program}/${subRoute}${title}`,
+      content
+    };
+  })
+  .sort((a, b) => a.order - b.order);

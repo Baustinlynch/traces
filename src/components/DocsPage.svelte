@@ -7,8 +7,9 @@
   export let logoImage;
   export let footerLinks = [];
 
-  $: visibleDocs = docs.filter(doc => !doc.hidden);
   $: activeDoc = docs.find((doc) => doc.slug === activeSlug) ?? docs[0];
+  $: activeProgram = activeDoc ? activeDoc.program : null;
+  $: visibleDocs = docs.filter(doc => !doc.hidden && doc.program === activeProgram);
   $: renderedContent = activeDoc ? renderMarkdown(activeDoc.content, docs) : '<p>No docs found.</p>';
 
   $: currentIndex = visibleDocs.findIndex(doc => doc.slug === activeSlug);
@@ -21,11 +22,11 @@
     <div class="docs-sidebar-inner">
       <p class="docs-eyebrow">Docs</p>
       <h1 class="docs-title">Workshop notes</h1>
-      <p class="docs-description">Rendered from the markdown files in <code>Docs/</code> with an Obsidian-inspired reading layout.</p>
+      <p class="docs-description">Rendered from the markdown files in <code>Docs/</code> with the default Obsidian look.</p>
 
       <nav class="docs-nav" aria-label="Docs navigation">
-        {#each docs.filter(doc => !doc.hidden) as doc}
-          <a href={`#/docs/${doc.slug}`} class:active={activeDoc && doc.slug === activeDoc.slug}>
+        {#each visibleDocs as doc}
+          <a href={`#/${doc.route}`} class:active={activeDoc && doc.slug === activeDoc.slug}>
             <span class="doc-group">{doc.group}</span>
             <strong>{doc.title}</strong>
           </a>
@@ -36,7 +37,6 @@
 
   <main class="docs-main">
     {#if activeDoc}
-      <div class="docs-breadcrumb">{activeDoc.path}</div>
       <article class="docs-article markdown-body">
         <header class="docs-article-header">
           <p class="docs-eyebrow">{activeDoc.group}</p>
@@ -44,24 +44,24 @@
         </header>
         {@html renderedContent}
 
-        {#if visibleDocs.length > 1}
-          <nav class="docs-pagination">
+        <nav class="docs-pagination">
             {#if prevDoc}
-              <a href={`#/docs/${prevDoc.slug}`} class="pagination-btn">
-                <span>←</span> {prevDoc.title}
+              <a href={`#/${prevDoc.route}`} class="pagination-btn pagination-prev">
+                <span class="pagination-label">← Previous</span>
+                <span class="pagination-title">{prevDoc.title}</span>
               </a>
             {:else}
-              <div class="pagination-btn disabled"></div>
+              <span class="pagination-btn pagination-prev pagination-empty" aria-hidden="true"></span>
             {/if}
             {#if nextDoc}
-              <a href={`#/docs/${nextDoc.slug}`} class="pagination-btn">
-                {nextDoc.title} <span>→</span>
+              <a href={`#/${nextDoc.route}`} class="pagination-btn pagination-next">
+                <span class="pagination-label">Next →</span>
+                <span class="pagination-title">{nextDoc.title}</span>
               </a>
             {:else}
-              <div class="pagination-btn disabled"></div>
+              <span class="pagination-btn pagination-next pagination-empty" aria-hidden="true"></span>
             {/if}
           </nav>
-        {/if}
       </article>
     {:else}
       <article class="docs-article markdown-body">
@@ -71,4 +71,4 @@
   </main>
 </section>
 
-<Footer logoImage={logoImage} links={footerLinks} />
+<Footer logoImage={logoImage} links={footerLinks} variant="docs" />

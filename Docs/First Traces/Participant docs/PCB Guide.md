@@ -17,7 +17,7 @@ Once you've logged in, you'll need to import the project file provided by your l
 ---
 
 ## 2. Understanding the Schematic
-Before we jump into the board layout, we need to have a look at the schematic. The schematic is the "blueprint" of your circuit—it doesn't care where components are physically located, only how they are connected.
+Before we jump into the board layout, we need to have a look at the schematic. The file you have been provided with shouldn't look like this, as this is a completed example.
 
 ![Schematic View](https://cdn.hackclub.com/01a0aabd-665e-7e09-8b85-0f95c3b7eab5/easyeda-schematic.png)
 

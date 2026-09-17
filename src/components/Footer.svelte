@@ -1,9 +1,10 @@
 <script>
   export let logoImage;
   export let links = [];
+  export let variant = '';
 </script>
 
-<footer class="footer">
+<footer class="footer" class:footer--docs={variant === 'docs'}>
   <div class="footer-inner">
     <img src={logoImage} alt="Traces" class="footer-logo" />
     <p>

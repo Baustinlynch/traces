@@ -1,13 +1,20 @@
 <script>
   import LandingPage from './components/LandingPage.svelte';
   import DocsPage from './components/DocsPage.svelte';
-  import Header from './components/Header.svelte';
   import { assets, docs, footerLinks, heroActions, timelineItems } from './lib/site-data.js';
+
+  function decode(part) {
+    try {
+      return decodeURIComponent(part);
+    } catch {
+      return part;
+    }
+  }
 
   function getRoute() {
     const hash = window.location.hash || '#/';
     const trimmed = hash.startsWith('#') ? hash.slice(1) : hash;
-    const parts = trimmed.split('/').filter(Boolean);
+    const parts = trimmed.split('/').filter(Boolean).map(decode);
 
     if (parts[0] === 'first-traces') {
       return {
@@ -17,9 +24,27 @@
     }
 
     if (parts[0] === 'docs') {
+      const routePath = parts.join('/');
+      const byRoute = docs.find((doc) => doc.route === routePath);
+      if (byRoute) {
+        return {
+          page: 'docs',
+          slug: byRoute.slug
+        };
+      }
+
+      const bySlug = parts[1] ? docs.find((doc) => doc.slug === parts[1]) : null;
+      if (bySlug) {
+        return {
+          page: 'docs',
+          slug: bySlug.slug
+        };
+      }
+
+      const firstVisible = docs.find((doc) => !doc.hidden);
       return {
         page: 'docs',
-        slug: parts[1] ?? docs[0]?.slug ?? null
+        slug: firstVisible?.slug ?? docs[0]?.slug ?? null
       };
     }
 
@@ -31,44 +56,12 @@
 
   let route = $state(getRoute());
 
-  // Theme Management
-  let theme = $state('dark');
-
-  function initTheme() {
-    const saved = localStorage.getItem('theme');
-    if (saved) {
-      theme = saved;
-    } else {
-      // Default light for docs, dark for home
-      theme = route.page === 'docs' ? 'light' : 'dark';
-    }
-    applyTheme();
-  }
-
-  function toggleTheme() {
-    theme = theme === 'dark' ? 'light' : 'dark';
-    localStorage.setItem('theme', theme);
-    applyTheme();
-  }
-
-  function applyTheme() {
-    if (typeof document !== 'undefined') {
-      document.documentElement.classList.toggle('light-theme', theme === 'light');
-    }
-  }
-
   function updateRoute() {
     route = getRoute();
-    // If no explicit user preference, adjust default based on route
-    if (!localStorage.getItem('theme')) {
-      theme = route.page === 'docs' ? 'light' : 'dark';
-      applyTheme();
-    }
   }
 
   if (typeof window !== 'undefined') {
     window.addEventListener('hashchange', updateRoute);
-    initTheme();
   }
 </script>
 
@@ -78,7 +71,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
   <link
-    href="https://fonts.googleapis.com/css2?family=Jersey+20&family=Fredoka:wght@400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Jersey+20&family=Fredoka:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   />
 </svelte:head>
@@ -92,8 +85,6 @@
     </filter>
   </defs>
 </svg>
-
-<Header page={route.page} {theme} onToggle={toggleTheme} />
 
 {#if route.page === 'docs'}
   <DocsPage

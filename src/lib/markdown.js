@@ -73,7 +73,7 @@ function createWikilinkExtension(docs) {
     },
     renderer(token) {
       const doc = docLookup.get(token.target.toLowerCase());
-      const href = doc ? `#/docs/${doc.slug}` : '#/docs';
+      const href = doc ? `#/${doc.route}` : '#/docs';
       return `<a class="internal-link" href="${href}">${escapeHtml(token.alias)}</a>`;
     }
   };
