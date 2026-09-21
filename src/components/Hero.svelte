@@ -1,4 +1,6 @@
 <script>
+  import RoughButton from './RoughButton.svelte';
+
   export let backgroundImage;
   export let actions = [];
 </script>
@@ -21,7 +23,12 @@
     </p>
     <div class="hero-actions">
       {#each actions as action}
-        <a href={action.href} target="_blank" rel="noopener" class={`btn ${action.variant}`}>{action.label}</a>
+        <RoughButton
+          href={action.href}
+          target="_blank"
+          rel="noopener"
+          variant={action.variant}
+        >{action.label}</RoughButton>
       {/each}
     </div>
   </div>

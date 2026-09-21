@@ -21,8 +21,7 @@ Before we jump into the board layout, we need to have a look at the schematic. T
 
 ![Schematic View](https://cdn.hackclub.com/01a0aabd-665e-7e09-8b85-0f95c3b7eab5/easyeda-schematic.png)
 
-
----
+Each part of the schematic corresponds to a component in your circuit. On the left of the screen you'll see all of the components available for you to use, read about their functionality, and place them on the schematic, for each one that you used in you WokWi design.
 
 ## 3. Converting to PCB
 Once your schematic is ready, we can convert it into a physical layout.
