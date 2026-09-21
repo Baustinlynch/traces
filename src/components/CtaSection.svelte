@@ -1,6 +1,4 @@
 <script>
-  import RoughButton from './RoughButton.svelte';
-
   export let logoImage;
 </script>
 
@@ -13,8 +11,8 @@
       we'll grant you the parts to build it for real.
     </p>
     <div class="cta-actions">
-      <RoughButton href="https://canva.link/traces" target="_blank" rel="noopener" variant="btn-gold" size="btn-large">Start the guide!</RoughButton>
-      <RoughButton href="https://traces.fillout.com/traces-ship" target="_blank" rel="noopener" variant="btn-cream" size="btn-large">Ship your project!</RoughButton>
+      <a href="https://canva.link/traces" target="_blank" rel="noopener" class="btn btn-gold btn-large">Start the guide!</a>
+      <a href="https://traces.fillout.com/traces-ship" target="_blank" rel="noopener" class="btn btn-cream btn-large">Ship your project!</a>
     </div>
     <p class="cta-foot">
       already running a club? say hi in
