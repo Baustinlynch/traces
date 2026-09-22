@@ -78,3 +78,7 @@ Once your DRC is clean and your traces look great:
 ![Exporting Gerbers 2](https://cdn.hackclub.com/01a0aabd-5eaa-7d38-8ed9-f810648e1118/easyeda-export-2.png)
 
 2. Send your files to your leader so that they can order the circuit board for you!
+
+---
+
+**Original slides:** [Traces: Guide Slides!](https://www.canva.com/d/qSRdPFCi5AAqwSx)

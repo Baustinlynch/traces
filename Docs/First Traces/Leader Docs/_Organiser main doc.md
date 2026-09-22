@@ -1,3 +1,7 @@
 Thank you for running First Traces! I([@Brenden](https://hackclub.enterprise.slack.com/team/U0A0JJ603N2) on slack) have spent so much of my time working on this program, and I hope that you and your participants have a better time running this workshop than i did making it! (many weekends spent working, and enough caffeine to take about 5 years of my life) Many thanks to [@Noah Walsh](https://hackclub.enterprise.slack.com/team/U09NRKW6DT8) for testing this workshop with this club, Anthropic for making claude, [@jps](https://hackclub.enterprise.slack.com/team/U07HEH4N8UV) for sponsoring this program, and [@aahil](https://hackclub.enterprise.slack.com/team/U0A5NM1QBU4) for stepping away to work on his other programs, and for allowing me to pick up running traces! Now on with the guide!
  
-The PowerPoint guides for this workshop do not prepare for every way that your participants **will** fuck it up, i recommend that you go through these guides yourself, and learn about the tools your participants will be using, [WokWi](https:wokwi.com)
+The PowerPoint guides for this workshop do not prepare for every way that your participants **will** fuck it up, i recommend that you go through these guides yourself, and learn about the tools your participants will be using, [WokWi](https://wokwi.com)
+
+---
+
+**Original slides:** [Traces: Guide Slides!](https://www.canva.com/d/qSRdPFCi5AAqwSx)

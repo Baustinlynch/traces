@@ -11,6 +11,8 @@ A breadboard is a plastic board full of tiny spring clips, so you can build circ
 
 ## Build your Wokwi circuit on a breadboard
 
+![Breadboard wiring diagram](https://cdn.hackclub.com/01a0c856-00a4-7df1-9b93-aaf4feee32db/breadboard-diagram.png)
+
 1. Push the LED into two **different** rows. The long leg (anode, +) and short leg (cathode, −) must never share a row.
 2. Push your 1000Ω resistor into the same row as the LED's long leg, with its other leg in an empty row.
 3. Run a jumper wire from that empty row (the resistor's free leg) to the same digital pin you used in Wokwi.
@@ -23,8 +25,8 @@ A breadboard is a plastic board full of tiny spring clips, so you can build circ
 2. Copy the code from your Wokwi simulation and paste it into the Arduino IDE.
 3. Make sure all the pins in your code match with the ones you have set up on your breadboard.
 4. Connect your Arduino to your computer, or whichever device you are using, using the USB cable.
-5. In the dropdown at the top left of the screen, select — *(the original slide's instructions cut off right here — worth checking the source deck or filling in the correct board/port option before printing this guide)*.
+5. In the dropdown at the top left of the screen, select your board — **Arduino Uno** — then pick your Arduino's port from the same dropdown.
 
 ---
 
-> **A note on images:** the breadboard-wiring diagrams on the original Session 4 slides are stored under a Canva asset permission this connection couldn't read, so they couldn't be re-hosted here. You can see them in the [Traces: Guide Slides! deck](https://www.canva.com/d/qSRdPFCi5AAqwSx).
+**Original slides:** [Traces: Guide Slides!](https://www.canva.com/d/qSRdPFCi5AAqwSx)

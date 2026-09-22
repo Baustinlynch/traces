@@ -10,11 +10,10 @@
 In this program we will:
 
 - **Session 1** — Learn about microcontrollers, and design and simulate a basic microcontroller circuit.
-- **Session 2** — Make your circuit using a breadboard and an Arduino Uno.
-- **Session 3** — Turn your circuit into a circuit board.
-- **Session 4** — Assemble/make your circuit board and test it!
-
-*(The deck actually runs a bit further than this overview promises — there's also a Session 5, which covers turning your circuit into a real PCB in EasyEDA.)*
+- **Session 2** — Wire up your circuit and write the code to control it.
+- **Session 3** — Get to grips with breadboards and the common code you'll use.
+- **Session 4** — Move your circuit from the Wokwi simulation to a real breadboard.
+- **Session 5** — Turn your breadboard circuit into a PCB in EasyEDA.
 
 ## Guide contents
 
@@ -23,3 +22,8 @@ In this program we will:
 3. [[Session 3 — Breadboards & Code Basics]]
 4. [[Session 4 — From Simulation to Breadboard]]
 5. [[Session 5 — From Breadboard to PCB (EasyEDA)]]
+6. [[PCB Guide]]
+
+---
+
+**Original slides:** [Traces: Guide Slides!](https://www.canva.com/d/qSRdPFCi5AAqwSx)

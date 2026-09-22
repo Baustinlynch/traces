@@ -16,7 +16,7 @@ A development board is a board, usually made by the manufacturer of a microcontr
 - **Digital pins** — the pins we can control with code; the microcontroller can turn them on and off.
 - **Analog pins** — read the voltage between themselves and ground, allowing us to read what state components such as buttons and potentiometers are in.
 
-*(The original slide includes a full labeled diagram of the Arduino Uno's pins alongside these descriptions — it's one of the images this export couldn't bring over; see the note at the end of this file.)*
+![Labeled diagram of the Arduino Uno's pins](https://cdn.hackclub.com/01a0c855-ed83-79f9-976c-a3aa000449bf/arduino-uno-pinout.png)
 
 ## How are we going to design a circuit?
 
@@ -27,9 +27,13 @@ We'll be using an **Arduino Uno**, powered by an ATmega328P chip.
 1. Go onto wokwi.com and click on the Arduino, then scroll down to "Start from scratch" and click **Arduino Uno**.
 2. It will drop you into a dropdown — to make the starter circuit, pick a resistor and an LED.
 
+![Wokwi's component dropdown](https://cdn.hackclub.com/01a0c855-f6a0-734c-8f83-c75ccaaeed25/wokwi-component-dropdown.png)
+
 ### Adding components
 
 On the top left of your circuit screen, click the **+** sign to add components. Place the LED and resistor like so:
+
+![Wokwi's "+" menu for adding components](https://cdn.hackclub.com/01a0c855-f1a5-7dc7-96a1-f99cf6639e01/wokwi-add-menu.png)
 
 ![Arduino Uno with an LED and resistor wired up](https://cdn.hackclub.com/01a0ac09-2d60-7197-bed6-151770ba60f6/width-198)
 
@@ -50,4 +54,4 @@ So make sure your resistor is 1000Ω, so that the LED is properly protected. Set
 
 ---
 
-> **A note on images:** a few diagrams on the original Session 1 slides (the full Arduino pinout diagram, and a couple of Wokwi screenshots showing the "+" menu and component dropdown) are stored under a Canva asset permission this connection couldn't read, so they couldn't be re-hosted here. Everything else — including the one image above — was pulled from the deck and re-hosted on the Hack Club CDN. You can see the originals in the [Traces: Guide Slides! deck](https://www.canva.com/d/qSRdPFCi5AAqwSx).
+**Original slides:** [Traces: Guide Slides!](https://www.canva.com/d/qSRdPFCi5AAqwSx)

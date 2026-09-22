@@ -54,4 +54,4 @@ When your board is finished, EasyEDA exports Gerber files straight to JLCPCB for
 
 ---
 
-*(Session 5's slides in the original deck are entirely text and diagrams — no photos or QR codes to re-host here.)*
+**Original slides:** [Traces: Guide Slides!](https://www.canva.com/d/qSRdPFCi5AAqwSx)

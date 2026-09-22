@@ -4,7 +4,11 @@
 
 Open Wokwi and keep working on your simulated circuits! You'll have the entire session to work on your circuits.
 
-**Reminder:** the original slide includes a map of a breadboard here — see [[Session 4 — From Simulation to Breadboard]] for a full breakdown of how a breadboard's rows and power rails are wired.
+Here's a reminder of how a breadboard is wired up:
+
+![Diagram of how a breadboard's rows and power rails connect](https://cdn.hackclub.com/01a0c856-00a4-7df1-9b93-aaf4feee32db/breadboard-diagram.png)
+
+For a full breakdown of how a breadboard's rows and power rails are wired, see [[Session 4 — From Simulation to Breadboard]].
 
 ## Common lines of code you should know
 
@@ -15,4 +19,4 @@ Open Wokwi and keep working on your simulated circuits! You'll have the entire s
 
 ---
 
-*(This was a short, code-focused session in the original deck — just the reminder and the code reference above.)*
+**Original slides:** [Traces: Guide Slides!](https://www.canva.com/d/qSRdPFCi5AAqwSx)

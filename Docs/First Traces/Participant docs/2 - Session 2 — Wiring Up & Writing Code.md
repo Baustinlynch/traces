@@ -1,20 +1,5 @@
 # Session 2 — Wiring Up & Writing Code
 
-## Join the club
-
-Scan this QR code to make a Hack Club account and join the club:
-
-![QR code to join the Hack Club](https://cdn.hackclub.com/01a0ac09-8231-7d3e-86a8-cf737dd5f2a6/width-148)
-
-Join link: https://clubs.hackclub.com/auth/member?join=YN349R
-
-There's also a "Join the team" slide with a Microsoft Teams QR code and link:
-
-![QR code for the Microsoft Teams channel](https://cdn.hackclub.com/01a0ac09-63b7-7c84-ba04-834bc57e8087/width-200)
-
-Teams link: https://teams.microsoft.com/l/team/19%3APd73FhlgLUWQdXUlkwlBp7rvoZDJXj_SVXGi7U9uReQ1%40thread.tacv2/conversations?groupId=712db69e-a0a9-4b4c-b37f-95cf383a8f39&tenantId=48acfe69-376a-42b5-9f69-c9e47bbfb9c4
-
-> **Heads up:** both of these slides were still marked **"Not For public release!!!"** in the deck, with some leftover testing notes layered on top (e.g. "just here for brenden use only"). I've left those annotations out of this file, but you'll probably want to double-check these two links/slides are ready before sharing this guide any further.
 
 ## Welcome back
 
@@ -32,4 +17,4 @@ Now, have a look at the other components you can add to your design. In the kit 
 
 ---
 
-> **A note on images:** the QR/logo images above and the Wokwi editor screenshot were pulled from the original slides and re-hosted on the Hack Club CDN. You can see the originals in the [Traces: Guide Slides! deck](https://www.canva.com/d/qSRdPFCi5AAqwSx).
+**Original slides:** [Traces: Guide Slides!](https://www.canva.com/d/qSRdPFCi5AAqwSx)
