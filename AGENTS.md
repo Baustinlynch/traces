@@ -13,7 +13,7 @@ No tests, no linter, no typecheck configured.
 
 ## Architecture
 
-SvelteKit 5 (SvelteKit 2) static site generated with `prerender = true` and deployed via `@sveltejs/adapter-vercel` (pinned to `nodejs22.x` so local builds work on any Node).
+SvelteKit 2 (Svelte 5) static site generated with `prerender = true` and deployed via `@sveltejs/adapter-vercel` (pinned to `nodejs22.x` so local builds work on any Node).
 
 - **Routing**: SvelteKit file-based routing in `src/routes/`. `+layout.js` sets `export const prerender = true` globally. All pages are SSG — a `/docs` or `/first-traces` request redirects to the real doc route via prerendered `<meta refresh>` redirects.
 - **Entry**: `src/app.html` (pre-paint theme script + fonts), `+layout.svelte` (global styles, theme sync, hand-drawn SVG filter), `src/app.css` (all global styles).
@@ -27,10 +27,10 @@ SvelteKit 5 (SvelteKit 2) static site generated with `prerender = true` and depl
 
 - **No tests or CI.** `npm run build` is the only verification step.
 - **Always build to verify.** `npm run build` runs SSR + prerender + adapter. Prerender-time errors (like the old `marked` OOM) only surface here, not in dev.
-- **Markdown stack is built per render.** `renderMarkdown()` in `src/lib/markdown.js` assembles a fresh `unified()` pipeline per call — `remark-parse` → `remark-gfm` → `remark-rehype` (with docs handlers) → `rehype-raw` → `@mapbox/rehype-prism` → `rehype-stringify` — the same stack as workshops.hackclub.com (`@hackclub/markdown`). Shared pieces live under `src/lib/markdown/`: `rehype-docs.js` (heading anchor links, internal/external link classes, image prefixing, optional h1 removal), `plugins/sh-to-shell.js`, `plugins/video-link-to-details.js`, and `plugins/traces.js` (the Traces-only extensions). Do NOT reuse a processor or call `.use()` on one you didn't build in this function — state accumulates across renders.
+- **Markdown stack is built per render.** `renderMarkdown()` in `src/lib/markdown/markdown.js` assembles a fresh `unified()` pipeline per call — `remark-parse` → `remark-gfm` → `remark-rehype` (with docs handlers) → `rehype-raw` → `@mapbox/rehype-prism` → `rehype-stringify` — the same stack as workshops.hackclub.com (`@hackclub/markdown`). Shared pieces live under `src/lib/markdown/`: `rehype-docs.js` (heading anchor links, internal/external link classes, image prefixing, optional h1 removal), `plugins/sh-to-shell.js`, `plugins/video-link-to-details.js`, and `plugins/traces.js` (the Traces-only extensions). Do NOT reuse a processor or call `.use()` on one you didn't build in this function — state accumulates across renders.
 - **Theme defaults are route-dependent.** Home defaults dark, docs defaults light — but only when no `localStorage` preference exists. Route changes re-apply the per-page default if the user hasn't explicitly toggled. A pre-paint inline script in `app.html` applies the theme before hydration to avoid flash.
 - **Nav is folder-scoped.** The sidebar and Previous/Next buttons only show docs from the top-level folder (`program`) of the doc you're viewing. Docs in other folders aren't reachable from the nav.
-- **Markdown has custom extensions.** Wikilinks (`[[Page|Alias]]`), callouts (`> [!type]`), task lists (`[ ]`/`[x]`), and image sizing (`![alt](url=200x100)` — no spaces after the URL or the tokenizer breaks). Entry point is `renderMarkdown(markdown, docs)` in `src/lib/markdown.js`.
+- **Markdown has custom extensions.** Wikilinks (`[[Page|Alias]]`), callouts (`> [!type]`), task lists (`[ ]`/`[x]`), and image sizing (`![alt](url=200x100)` — no spaces after the URL or the tokenizer breaks). Entry point is `renderMarkdown(markdown, docs)` in `src/lib/markdown/markdown.js`.
 - **No TypeScript.** All source is plain JS/Svelte.
 - **Agents.md auto-update.** Agents are to automatically update this file after significant changes are made to the codebase (e.g., new features, architectural changes, or major bug fixes).
 

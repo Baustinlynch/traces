@@ -19,8 +19,6 @@
   <aside class="docs-sidebar">
     <div class="docs-sidebar-inner">
       <p class="docs-eyebrow">Docs</p>
-      <h1 class="docs-title">Workshop notes</h1>
-      <p class="docs-description">Rendered from the markdown files in <code>Docs/</code> with the default Obsidian look.</p>
       <button type="button" class="theme-toggle" onclick={toggleTheme}>
         {theme.value === 'dark' ? '☀ Light mode' : '☾ Dark mode'}
       </button>

@@ -16,14 +16,14 @@ npm run preview   # serve the production build locally
 ## Features
 
 - **Zero-code docs** — drop a `.md` file in `Docs/` and it is picked up at build time via `import.meta.glob`. Routes, titles, order, and visibility are all derived from the file's path and name.
-- **Obsidian style** — built on `marked` + `dompurify` + Prism.js:
+- **Obsidian style** — built on `unified` + `remark`/`rehype` (same stack as workshops.hackclub.com):
   - Wikilinks: `[[Page Title|Display Alias]]` resolve against doc titles.
   - Callouts: `> [!note]`, `> [!warning]`, `> [!tip]`, etc. with optional custom titles.
   - Task lists: `- [ ]` / `- [x]`.
   - Image sizing: `![alt](url=200x100)` — images are lazy-loaded.
 - **Hash-based routing** — `#/` landing page, `#/docs/...` docs, plus route aliases.
 - **Sane link handling** — external links open in a new tab, internal hash links stay in the app.
-- **Syntax highlighting** for code blocks via Prism.js.
+- **Syntax highlighting** for code blocks via `@mapbox/rehype-prism`.
 
 ## Code Structure
 
@@ -38,7 +38,13 @@ traces/
 │   ├── app.css                   # all global styles
 │   ├── lib/
 │   │   ├── site-data.js          # docs loader, routes, and site assets
-│   │   └── markdown.js           # renderMarkdown + custom extensions
+│   │   └── markdown/             # unified/remark/rehype markdown pipeline
+│   │       ├── markdown.js       # renderMarkdown entry point
+│   │       ├── rehype-docs.js    # heading anchors, link classes, image prefixing
+│   │       └── plugins/
+│   │           ├── sh-to-shell.js
+│   │           ├── traces.js      # wikilinks, callouts, task lists, image sizing
+│   │           └── video-link-to-details.js
 │   └── components/               # landing page + docs page components
 ├── Contributing.md               # full markdown syntax and route conventions
 ├── index.html                    # Vite entry point
@@ -59,13 +65,14 @@ See `Contributing.md` for the complete syntax reference (wikilinks, callouts, ta
 
 - **Docs loading**: `src/lib/site-data.js` globs every `.md` under `Docs/`, derives each doc's metadata (slug, program, group, title, order, hidden, route) from its path, and exposes it to the renderer.
 - **Routing**: `App.svelte` listens for `hashchange` and resolves `#/docs/...` routes by exact route match, then slug, with a fallback to the first visible doc. The sidebar and prev/next pagination are scoped to the docs in the active doc's top-level program folder.
-- **Markdown rendering**: `src/lib/markdown.js` (`renderMarkdown(markdown, docs)`) parses content with `marked`, applies the custom extensions via the tokenizer, sanitizes output with DOMPurify, and highlights code with Prism.
+- **Markdown rendering**: `src/lib/markdown/markdown.js` (`renderMarkdown(markdown, docs)`) uses a `unified` pipeline — `remark-parse` → `remark-gfm` → `remark-rehype` (with docs handlers) → `rehype-raw` → `@mapbox/rehype-prism` → `rehype-stringify` — the same stack as workshops.hackclub.com (`@hackclub/markdown`). Custom extensions live under `src/lib/markdown/`: `rehype-docs.js` (heading anchor links, internal/external link classes, image prefixing, optional h1 removal), `plugins/sh-to-shell.js`, `plugins/video-link-to-details.js`, and `plugins/traces.js` (wikilinks, callouts, task lists, image sizing). Output is sanitized with `isomorphic-dompurify`.
 - **Theming**: styled via a single global stylesheet (`src/app.css`) with a light default palette and a brand color scheme.
 
 ## Known Caveats
 
 - `npm run build` is the only automated check; no CI, tests, or linter.
 - Doc images are full `cdn.hackclub.com` URLs referenced directly in markdown; only site chrome assets (logo, background, section breakers, sticker) stay local in `static/images/` (served from `/images/...` and defined in `src/lib/site-data.js`).
+- Markdown processor is rebuilt fresh per render — do not reuse a processor or call `.use()` on one you didn't build in `renderMarkdown()`; state accumulates across renders.
 
 ## Contributing
 

@@ -4,6 +4,8 @@
 
 This document describes the conventions for contributing to the Traces guide. It covers the custom markdown syntax supported by the renderer and how the file structure maps to URLs.
 
+The markdown renderer (`src/lib/markdown/markdown.js`) uses a `unified`/`remark`/`rehype` pipeline (same as workshops.hackclub.com): `remark-parse` → `remark-gfm` → `remark-rehype` → `rehype-raw` → `@mapbox/rehype-prism` → `rehype-stringify`, with custom extensions in `src/lib/markdown/plugins/traces.js`. Output is sanitized with `isomorphic-dompurify`.
+
 ## File Structure & URLs
 
 Docs live in the `Docs/` directory. The file path determines the URL route, title, order, and visibility — no code changes are needed.
@@ -34,7 +36,7 @@ Docs live in the `Docs/` directory. The file path determines the URL route, titl
 
 ## Markdown Syntax
 
-The renderer (`src/lib/markdown.js`) supports standard markdown plus these custom extensions.
+The renderer (`src/lib/markdown/markdown.js`) supports standard markdown plus these custom extensions.
 
 ### Images
 
@@ -109,7 +111,7 @@ Create checkboxes in lists:
 
 ### Code Blocks
 
-Code blocks are syntax-highlighted via Prism.js. Specify the language:
+Code blocks are syntax-highlighted via `@mapbox/rehype-prism`. Specify the language:
 
 ```markdown
 ```javascript
