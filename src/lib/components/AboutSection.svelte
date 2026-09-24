@@ -1,5 +1,5 @@
 <script>
-  export let stickerImage;
+  let { stickerImage } = $props();
 </script>
 
 <section class="section" id="what">

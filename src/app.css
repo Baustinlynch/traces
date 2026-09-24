@@ -34,6 +34,40 @@
     --maxw: 1180px;
 }
 
+/* Obsidian default dark theme palette (docs pages, toggled via data-theme) */
+[data-theme='dark'] {
+    --obsidian-bg: #1e1e1e;
+    --obsidian-panel: #262626;
+    --obsidian-panel-soft: #2f2f2f;
+    --obsidian-hover: #303030;
+    --obsidian-text: #dadada;
+    --obsidian-title: #f2f2f2;
+    --obsidian-muted: #9e9e9e;
+    --obsidian-faint: #808080;
+    --obsidian-accent: #a48bff;
+    --obsidian-accent-hover: #b3a0ff;
+    --obsidian-accent-strong: #a48bff;
+    --obsidian-code-bg: #2a2a2a;
+    --obsidian-border: #3f3f3f;
+}
+
+.theme-toggle {
+    display: inline-block;
+    margin: 0.75rem 0 0;
+    padding: 0.35rem 0.75rem;
+    border: 1px solid var(--obsidian-border);
+    border-radius: 6px;
+    background: var(--obsidian-panel-soft);
+    color: var(--obsidian-text);
+    font-family: var(--font-docs);
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+.theme-toggle:hover {
+    background: var(--obsidian-hover);
+}
+
 * {
     box-sizing: border-box;
 }
@@ -195,7 +229,7 @@ img {
 
 .title-accent {
     color: var(--gold);
-    font-size: 1rem;
+    font-size: 1.5rem;
 }
 
 .word-traces {

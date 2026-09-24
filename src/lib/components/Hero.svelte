@@ -1,6 +1,5 @@
 <script>
-  export let backgroundImage;
-  export let actions = [];
+  let { backgroundImage, actions = [] } = $props();
 </script>
 
 <section class="hero" id="top">

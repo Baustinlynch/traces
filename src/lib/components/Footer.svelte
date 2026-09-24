@@ -1,7 +1,5 @@
 <script>
-  export let logoImage;
-  export let links = [];
-  export let variant = '';
+  let { logoImage, links = [], variant = '' } = $props();
 </script>
 
 <footer class="footer" class:footer--docs={variant === 'docs'}>

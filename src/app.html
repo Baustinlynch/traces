@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jersey+20&family=Fredoka:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      // Apply the theme before first paint to avoid a flash of the wrong theme.
+      // Home defaults dark, docs defaults light; an explicit user choice
+      // (persisted in localStorage) wins on every page.
+      (function () {
+        var stored = null;
+        try {
+          stored = localStorage.getItem('traces-theme');
+        } catch (e) {}
+        var isDocs = location.pathname.startsWith('/docs') || location.pathname.startsWith('/first-traces');
+        var theme = stored === 'light' || stored === 'dark' ? stored : isDocs ? 'light' : 'dark';
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
+    %sveltekit.head%
+  </head>
+  <body data-sveltekit-preload-data="hover">
+    <div style="display: contents">%sveltekit.body%</div>
+  </body>
+</html>

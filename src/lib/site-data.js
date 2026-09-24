@@ -1,8 +1,8 @@
-const backgroundImage = 'https://cdn.hackclub.com/01a0aabc-f8d1-709f-b0b3-aba661d8a59f/background.png';
-const logoImage = 'https://cdn.hackclub.com/01a0aabc-ffa1-714d-b041-6cd0e01ce1ce/logo.png';
-const sectionBreakerImage = 'https://cdn.hackclub.com/01a0aabd-0421-76a6-b795-ee5cfad6d116/section-breaker.png';
-const sectionBreakerLineImage = 'https://cdn.hackclub.com/01a0aabc-fc95-71d4-8823-ce7a5add7bc2/section-breaker-line.png';
-const stickerImage = 'https://cdn.hackclub.com/01a0aabc-7701-7153-a0cd-9d976d331e3a/sticker-primary.png';
+const backgroundImage = '/images/background.png';
+const logoImage = '/images/logo.png';
+const sectionBreakerImage = '/images/section-breaker.png';
+const sectionBreakerLineImage = '/images/section-breaker-line.png';
+const stickerImage = '/images/sticker-primary.png';
 const docModules = import.meta.glob('/Docs/**/*.md', {
   query: '?raw',
   import: 'default',
@@ -100,6 +100,7 @@ export const docs = Object.entries(docModules)
     const leader = rel.some((dir) => /leader/i.test(dir));
     const subRoute = leader ? 'Leader/' : '';
     const group = rel.length ? rel[rel.length - 1] : program;
+    const route = `docs/${program}/${subRoute}${title}`;
     return {
       slug: `${slugify(program)}-${slugify(title)}`,
       program,
@@ -107,7 +108,9 @@ export const docs = Object.entries(docModules)
       title,
       order: order ?? MAX_ORDER,
       hidden,
-      route: `docs/${program}/${subRoute}${title}`,
+      route,
+      // Root-relative, percent-encoded URL for SvelteKit's file-based router.
+      href: `/${route.split('/').map(encodeURIComponent).join('/')}`,
       content
     };
   })

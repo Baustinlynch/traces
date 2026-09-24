@@ -1,6 +1,5 @@
 <script>
-  export let lineImage;
-  export let breakerImage;
+  let { lineImage, breakerImage } = $props();
 </script>
 
 <div class="breaker" aria-hidden="true">

@@ -6,10 +6,7 @@
   import CtaSection from './CtaSection.svelte';
   import Footer from './Footer.svelte';
 
-  export let assets;
-  export let heroActions = [];
-  export let timelineItems = [];
-  export let footerLinks = [];
+  let { assets, heroActions = [], timelineItems = [], footerLinks = [] } = $props();
 </script>
 
 <Hero backgroundImage={assets.bgImage} actions={heroActions} />

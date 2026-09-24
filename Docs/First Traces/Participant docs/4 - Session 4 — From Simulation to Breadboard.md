@@ -11,7 +11,7 @@ A breadboard is a plastic board full of tiny spring clips, so you can build circ
 
 ## Build your Wokwi circuit on a breadboard
 
-![Breadboard wiring diagram](https://cdn.hackclub.com/01a0c856-00a4-7df1-9b93-aaf4feee32db/breadboard-diagram.png)
+![Breadboard wiring diagram](/images/breadboard-diagram.png)
 
 1. Push the LED into two **different** rows. The long leg (anode, +) and short leg (cathode, −) must never share a row.
 2. Push your 1000Ω resistor into the same row as the LED's long leg, with its other leg in an empty row.

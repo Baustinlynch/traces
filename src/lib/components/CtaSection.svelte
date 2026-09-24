@@ -1,5 +1,5 @@
 <script>
-  export let logoImage;
+  let { logoImage } = $props();
 </script>
 
 <section class="cta" id="apply">

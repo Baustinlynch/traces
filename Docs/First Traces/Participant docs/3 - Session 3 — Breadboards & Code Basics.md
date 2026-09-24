@@ -6,7 +6,7 @@ Open Wokwi and keep working on your simulated circuits! You'll have the entire s
 
 Here's a reminder of how a breadboard is wired up:
 
-![Diagram of how a breadboard's rows and power rails connect](https://cdn.hackclub.com/01a0c856-00a4-7df1-9b93-aaf4feee32db/breadboard-diagram.png)
+![Diagram of how a breadboard's rows and power rails connect](/images/breadboard-diagram.png)
 
 For a full breakdown of how a breadboard's rows and power rails are wired, see [[Session 4 — From Simulation to Breadboard]].
 
