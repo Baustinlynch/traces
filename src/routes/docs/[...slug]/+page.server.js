@@ -10,7 +10,7 @@ export function entries() {
   return docs.map((doc) => ({ slug: doc.route.replace(/^docs\//, '') }));
 }
 
-export function load({ params }) {
+export async function load({ params }) {
   // Bare /docs falls back to the first visible doc, matching the old router.
   if (!params.slug) {
     const firstVisible = docs.find((d) => !d.hidden) ?? docs[0];
@@ -42,7 +42,8 @@ export function load({ params }) {
       program: doc.program
     },
     // Rendered at build time so the prerendered HTML contains the full content.
-    html: renderMarkdown(doc.content, docs),
+    // The page header already renders the doc title, so drop the markdown h1.
+    html: await renderMarkdown(doc.content, docs, { removeTitle: true }),
     visibleDocs,
     prevDoc: currentIndex > 0 ? visibleDocs[currentIndex - 1] : null,
     nextDoc: currentIndex >= 0 && currentIndex < visibleDocs.length - 1 ? visibleDocs[currentIndex + 1] : null,
