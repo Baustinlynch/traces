@@ -5,3 +5,4 @@ dist/
 .claude/
 .obsidian/
 .amp/portals/*
+.agents
