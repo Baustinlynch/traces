@@ -20,7 +20,7 @@ npm run preview   # serve the production build locally
   - Wikilinks: `[[Page Title|Display Alias]]` resolve against doc titles.
   - Callouts: `> [!note]`, `> [!warning]`, `> [!tip]`, etc. with optional custom titles.
   - Task lists: `- [ ]` / `- [x]`.
-  - Image sizing: `![alt](url =200x100)` — images are lazy-loaded.
+  - Image sizing: `![alt](url=200x100)` — images are lazy-loaded.
 - **Hash-based routing** — `#/` landing page, `#/docs/...` docs, plus route aliases.
 - **Sane link handling** — external links open in a new tab, internal hash links stay in the app.
 - **Syntax highlighting** for code blocks via Prism.js.
@@ -65,7 +65,7 @@ See `Contributing.md` for the complete syntax reference (wikilinks, callouts, ta
 ## Known Caveats
 
 - `npm run build` is the only automated check; no CI, tests, or linter.
-- All images are remote CDN URLs defined in `src/lib/site-data.js` — the `assets/` directory is unused.
+- Doc images are full `cdn.hackclub.com` URLs referenced directly in markdown; only site chrome assets (logo, background, section breakers, sticker) stay local in `static/images/` (served from `/images/...` and defined in `src/lib/site-data.js`).
 
 ## Contributing
 

@@ -16,7 +16,7 @@ A development board is a board, usually made by the manufacturer of a microcontr
 - **Digital pins** — the pins we can control with code; the microcontroller can turn them on and off.
 - **Analog pins** — read the voltage between themselves and ground, allowing us to read what state components such as buttons and potentiometers are in.
 
-![Labeled diagram of the Arduino Uno's pins](/images/arduino-uno-pinout.png = 200x100)
+![Labeled diagram of the Arduino Uno's pins](https://cdn.hackclub.com/01a0c855-ed83-79f9-976c-a3aa000449bf/arduino-uno-pinout.png=200x100)
 
 ## How are we going to design a circuit?
 
@@ -27,15 +27,15 @@ We'll be using an **Arduino Uno**, powered by an ATmega328P chip.
 1. Go onto wokwi.com and click on the Arduino, then scroll down to "Start from scratch" and click **Arduino Uno**.
 2. It will drop you into a dropdown — to make the starter circuit, pick a resistor and an LED.
 
-![Wokwi's component dropdown](/images/wokwi-component-dropdown.png)
+![Wokwi's component dropdown](https://cdn.hackclub.com/01a0c855-f6a0-734c-8f83-c75ccaaeed25/wokwi-component-dropdown.png)
 
 ### Adding components
 
 On the top left of your circuit screen, click the **+** sign to add components. Place the LED and resistor like so:
 
-![Wokwi's "+" menu for adding components](/images/wokwi-add-menu.png)
+![Wokwi's "+" menu for adding components](https://cdn.hackclub.com/01a0c855-f1a5-7dc7-96a1-f99cf6639e01/wokwi-add-menu.png)
 
-![Arduino Uno with an LED and resistor wired up](/images/width-198.png)
+![Arduino Uno with an LED and resistor wired up](https://cdn.hackclub.com/01a0ac09-2d60-7197-bed6-151770ba60f6/width-198)
 
 ### Why do we need a resistor?
 

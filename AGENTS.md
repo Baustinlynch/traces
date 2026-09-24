@@ -6,7 +6,7 @@
 npm run dev          # dev server
 npm run build        # production build (prerenders every route, runs adapter)
 npm run preview      # serve production build locally
-npm run migrate:images   # rewrite CDN image URLs in Docs/ to local /images paths
+npm run migrate:images   # pull any cdn.hackclub.com docs images in Docs/ into static/images/ (restore tool)
 ```
 
 No tests, no linter, no typecheck configured.
@@ -20,7 +20,8 @@ SvelteKit 5 (SvelteKit 2) static site generated with `prerender = true` and depl
 - **Layout**: `src/routes/+layout.svelte` imports `src/lib/theme.svelte.js` to re-apply per-page theme defaults on navigation. `+error.svelte` renders 404s.
 - **Content**: markdown files in `Docs/` are auto-loaded at build time via `import.meta.glob` in `src/lib/site-data.js`. Everything (title, order, folder, route, hidden flag, `href`) is derived from the file's path and name — no per-doc code.
 - **Docs route**: `src/routes/docs/[...slug]/+page.server.js` renders each doc at build time (via `entries()`, including hidden docs) and serves the fully-rendered HTML.
-- **Assets**: images live in `static/images/` and are served from `/images/...`. No CDN. `assets/` is empty.
+- **Assets**: site asset images (logo, background, section breakers, sticker) live in `static/images/` and are served from `/images/...` — referenced in `src/lib/site-data.js`. They stay local. `assets/` is empty.
+- **Docs images**: markdown images in `Docs/` point at the Hack Club CDN (`https://cdn.hackclub.com/...`) by full URL — no local copies. `scripts/migrate-images.mjs` (`npm run migrate:images`) can pull any CDN docs images into `static/images/` if needed.
 
 ## Gotchas
 
@@ -29,7 +30,7 @@ SvelteKit 5 (SvelteKit 2) static site generated with `prerender = true` and depl
 - **`marked` is configured per render, not globally.** `renderMarkdown()` in `src/lib/markdown.js` constructs a fresh `new Marked()` instance per call and registers `gfmHeadingId`, `markedHighlight`, and the custom extensions on it. Do NOT reconfigure the global `marked`/call `marked.use()` per render — marked accumulates extensions/renderers on every `.use()`, which compounds to OOM.
 - **Theme defaults are route-dependent.** Home defaults dark, docs defaults light — but only when no `localStorage` preference exists. Route changes re-apply the per-page default if the user hasn't explicitly toggled. A pre-paint inline script in `app.html` applies the theme before hydration to avoid flash.
 - **Nav is folder-scoped.** The sidebar and Previous/Next buttons only show docs from the top-level folder (`program`) of the doc you're viewing. Docs in other folders aren't reachable from the nav.
-- **Markdown has custom extensions.** Wikilinks (`[[Page|Alias]]`), callouts (`> [!type]`), task lists (`[ ]`/`[x]`), and image sizing (`![alt](url =200x100)`). Entry point is `renderMarkdown(markdown, docs)` in `src/lib/markdown.js`.
+- **Markdown has custom extensions.** Wikilinks (`[[Page|Alias]]`), callouts (`> [!type]`), task lists (`[ ]`/`[x]`), and image sizing (`![alt](url=200x100)` — no spaces after the URL or the tokenizer breaks). Entry point is `renderMarkdown(markdown, docs)` in `src/lib/markdown.js`.
 - **No TypeScript.** All source is plain JS/Svelte.
 - **Agents.md auto-update.** Agents are to automatically update this file after significant changes are made to the codebase (e.g., new features, architectural changes, or major bug fixes).
 
@@ -44,7 +45,7 @@ Docs are zero-code: just drop a `.md` file in `Docs/` and it's picked up at buil
 
 ## Adding images
 
-- Drop the file in `static/images/` and reference it in markdown as `/images/name.png`.
-- `npm run migrate:images` (`scripts/migrate-images.mjs`) rewrites legacy CDN image URLs in `Docs/` to the local `/images/` path form.
+- **Docs images**: upload the file to the Hack Club CDN (`cdn.hackclub.com`) and reference the full URL in markdown: `![alt](https://cdn.hackclub.com/.../name.png)`. Keep filesize in mind — the CDN serves these directly to readers.
+- **Site assets** (logo, background, section breakers, sticker): drop the file in `static/images/` and reference it as `/images/name.png`. These stay local because the site chrome needs them immediately.
 
 No changes needed in `src/lib/site-data.js` (other than asset constants) or any component to add docs.

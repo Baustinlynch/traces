@@ -9,7 +9,7 @@ Microcontrollers can be programmed using a variety of different programming lang
 
 On the left side of the screen is the window where we'll write our code for the Arduino. Right now our circuit isn't doing anything, because we haven't written any code to tell the pins what to output. There are two sections in our code window — the **setup** section and the **loop** section. We're going to be writing our code in the setup section for now.
 
-![Wokwi's code editor next to the simulated Arduino Uno](/images/width-200.jpg)
+![Wokwi's code editor next to the simulated Arduino Uno](https://cdn.hackclub.com/01a0ac09-4813-782c-a310-0c18cb2ba5ea/width-200)
 
 ## Try more components
 

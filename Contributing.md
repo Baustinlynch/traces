@@ -38,28 +38,24 @@ The renderer (`src/lib/markdown.js`) supports standard markdown plus these custo
 
 ### Images
 
-Standard markdown images work as expected:
+Guide images are **screenshots stored on the Hack Club CDN** (`cdn.hackclub.com`) — never commit local copies or reference `/images/...` for doc content. Upload the file to the CDN, then reference the full URL:
 
 ```markdown
 ![Alt text](https://cdn.hackclub.com/path/to/image.png)
 ```
 
-**Custom image sizing** is supported using the `=WIDTHxHEIGHT` syntax appended to the URL:
+Local `static/images/` is reserved for site chrome assets (logo, background, section breakers, sticker); doc content always points at the CDN.
+
+**Custom image sizing** is supported using `=WIDTHxHEIGHT` appended directly to the URL with **no spaces**:
 
 ```markdown
-![Alt text](https://cdn.hackclub.com/path/to/image.png =200x100)
-```
-
-Spaces around the `x` are optional:
-
-```markdown
-![Alt text](https://cdn.hackclub.com/path/to/image.png = 300 x 150)
+![Alt text](https://cdn.hackclub.com/path/to/image.png=200x100)
 ```
 
 You can also combine sizing with a title:
 
 ```markdown
-![Alt text](https://cdn.hackclub.com/path/to/image.png =400x200 "Caption text")
+![Alt text](https://cdn.hackclub.com/path/to/image.png=400x200 "Caption text")
 ```
 
 Images are lazy-loaded by default (`loading="lazy"`).
