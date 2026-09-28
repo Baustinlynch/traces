@@ -2,12 +2,17 @@ import { browser } from '$app/environment';
 
 const STORAGE_KEY = 'traces-theme';
 
+// Routes that default to the light theme. Kept in sync with the pre-paint
+// script in app.html.
+const LIGHT_PREFIXES = ['/workshops', '/docs', '/first-traces'];
+
 /**
- * Per-page defaults: the landing page is dark, docs pages are light.
- * These only apply while the user has not explicitly toggled a theme.
+ * Per-page defaults: the landing page is dark, everything that reads like docs
+ * (the workshop showcase and the docs themselves) is light. These only apply
+ * while the user has not explicitly toggled a theme.
  */
 export function defaultThemeFor(pathname) {
-  return pathname.startsWith('/docs') || pathname.startsWith('/first-traces') ? 'light' : 'dark';
+  return LIGHT_PREFIXES.some((prefix) => pathname.startsWith(prefix)) ? 'light' : 'dark';
 }
 
 function storedTheme() {

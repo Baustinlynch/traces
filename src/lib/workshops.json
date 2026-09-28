@@ -1,0 +1,23 @@
+{
+  "$example": {
+    "//": "Reference only — not a real program. Every option, with its default. Copy the keys you need under a program folder name in Docs/ and delete this block.",
+    "enabled": true,
+    "published": true,
+    "startAt": "PCB Guide",
+    "href": "/docs/First%20Traces/PCB%20Guide",
+    "options": {
+      "enabled": "true (default) puts the program on /workshops; false hides just its card — the guides stay published and can still be opened by URL.",
+      "published": "true (default) keeps the guides reachable; false unpublishes the whole folder — no card, no nav or prev/next entries, and the URLs are not generated, so they 404.",
+      "startAt": "Title of the doc inside the program that the card opens. Default: the program's first guide. An unknown title falls back to that first guide.",
+      "href": "Full URL for the card to point at instead, e.g. an off-site page. Wins over startAt. Default: the program's first guide."
+    }
+  },
+  "First Traces": {
+    "enabled": true,
+    "startAt": "Introduction"
+  },
+  "Testing": {
+    "enabled": false,
+    "published": true
+  }
+}

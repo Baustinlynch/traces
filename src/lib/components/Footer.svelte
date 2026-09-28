@@ -46,6 +46,7 @@
     <p>
         Made by teens, for teens.
     </p>
+    <p class="footer-credit">The Hack Foundation</p>
     <div class="footer-links">
       {#each links as link}
         <a href={link.href} target="_blank" rel="noopener">{link.label}</a>

@@ -530,6 +530,13 @@ img {
     text-align: center;
 }
 
+.footer-credit {
+    font-size: 0.78rem !important;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.7;
+}
+
 .footer-links {
     display: flex;
     justify-content: center;
@@ -537,7 +544,6 @@ img {
     flex-wrap: wrap;
     font-size: 0.9rem;
 }
-
 .footer-links a {
     color: var(--gold);
 }
@@ -581,6 +587,248 @@ img {
 
 .footer--docs .footer-links a:hover {
     color: var(--obsidian-accent-hover);
+}
+
+/* Workshops showcase (/workshops) — card grid modelled on workshops.hackclub.com */
+
+.workshops-head {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    background: var(--green-deep);
+    color: var(--cream);
+    padding: 28px clamp(20px, 6vw, 64px) 76px;
+}
+
+.workshops-head-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.5;
+}
+
+.workshops-head::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+        linear-gradient(180deg, rgba(28, 40, 18, 0.62) 0%, rgba(20, 30, 14, 0.86) 100%),
+        radial-gradient(80% 70% at 50% 120%, rgba(20, 30, 14, 0.5), transparent 70%);
+    pointer-events: none;
+}
+
+.workshops-head-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+.workshops-head-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: clamp(48px, 9vw, 96px);
+}
+
+.workshops-home {
+    font-family: var(--font-round);
+    font-weight: 600;
+    font-size: 0.92rem;
+    color: var(--gold);
+    text-decoration: none;
+}
+
+.workshops-home:hover {
+    color: var(--cream);
+    text-decoration: none;
+}
+
+.workshops-title {
+    margin: 0 0 18px;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(2.6rem, 7vw, 5rem);
+    line-height: 0.98;
+    color: var(--cream);
+    text-shadow: 0 3px 26px rgba(0, 0, 0, 0.45);
+}
+
+.workshops-sub {
+    margin: 0 0 32px;
+    max-width: 620px;
+    font-size: 1.08rem;
+    font-weight: 400;
+    color: #e9ecdf;
+}
+
+.workshops-sub strong {
+    color: var(--gold);
+}
+
+.workshops-body {
+    background: var(--obsidian-bg);
+    color: var(--obsidian-text);
+    padding: clamp(36px, 6vw, 64px) clamp(16px, 5vw, 32px) clamp(48px, 7vw, 88px);
+    font-family: var(--font-docs);
+}
+
+.workshops-grid {
+    display: grid;
+    gap: 16px;
+    max-width: 1024px;
+    margin: 0 auto;
+}
+
+@media screen and (min-width: 32em) {
+    .workshops-grid {
+        gap: 24px;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (min-width: 56em) {
+    .workshops-grid {
+        gap: 28px;
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.workshop-card {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 14px;
+    border: 2px solid var(--obsidian-border);
+    background: var(--obsidian-panel);
+    color: var(--obsidian-text);
+    text-decoration: none;
+    transition: transform 0.125s ease-in-out, box-shadow 0.125s ease-in-out,
+        border-color 0.125s ease-in-out;
+}
+
+.workshop-card:hover,
+.workshop-card:focus-visible {
+    transform: scale(1.03);
+    border-color: var(--gold);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
+    text-decoration: none;
+}
+
+.workshop-card--featured {
+    grid-column: span 2;
+    border-color: var(--gold);
+    background: var(--obsidian-bg);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.125);
+}
+
+.workshop-card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 20px 20px 24px;
+    line-height: 1.5;
+}
+
+.workshop-card--featured .workshop-card-body {
+    padding: clamp(24px, 4vw, 40px);
+    gap: 10px;
+}
+
+.workshop-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 999px;
+    border: 2px solid var(--gold);
+    background: var(--gold);
+    color: var(--ink);
+    font-family: var(--font-round);
+    font-weight: 600;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.workshop-card-title {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 1.5rem;
+    line-height: 1.1;
+    color: var(--obsidian-title);
+}
+
+.workshop-card--featured .workshop-card-title {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+}
+
+.workshop-card-tagline {
+    margin: 0;
+    color: var(--obsidian-muted);
+    font-size: 0.98rem;
+    font-weight: 500;
+}
+
+.workshop-card--featured .workshop-card-tagline {
+    font-size: 1.15rem;
+    color: var(--ink-soft);
+}
+
+[data-theme='dark'] .workshop-card--featured .workshop-card-tagline {
+    color: var(--obsidian-muted);
+}
+
+.workshop-card-description {
+    margin: 0;
+    max-width: 62ch;
+    color: var(--obsidian-muted);
+    font-size: 0.95rem;
+}
+
+.workshop-card-meta {
+    margin-top: 6px;
+    color: var(--obsidian-accent);
+    font-family: var(--font-round);
+    font-weight: 600;
+    font-size: 0.88rem;
+}
+
+.workshop-card-art {
+    position: relative;
+    margin-top: auto;
+    width: 100%;
+    height: 0;
+    padding-bottom: 50%;
+    background:
+        radial-gradient(circle at 1px 1px, rgba(248, 186, 90, 0.35) 1px, transparent 0) 0 0 / 14px 14px,
+        linear-gradient(135deg, var(--green) 0%, var(--green-deep) 100%);
+    border-top: 1px solid var(--obsidian-border);
+}
+
+.workshop-card-art img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.workshop-card-logo {
+    object-fit: contain !important;
+    object-position: center !important;
+    padding: 12%;
+}
+
+.workshops-empty {
+    max-width: 1024px;
+    margin: 0 auto;
+    color: var(--obsidian-muted);
+    text-align: center;
 }
 
 .docs-shell {
@@ -1058,5 +1306,11 @@ details[open] .details-video-caret {
 
     .hero-title {
         white-space: normal;
+    }
+}
+
+@media (max-width: 32em) {
+    .workshop-card--featured {
+        grid-column: 1 / -1;
     }
 }

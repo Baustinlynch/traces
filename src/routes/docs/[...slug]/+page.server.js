@@ -5,9 +5,15 @@ import { renderMarkdown } from '$lib/markdown.js';
 /**
  * Tell the prerenderer about every doc route (including hidden docs, which
  * are routable but not linked from the nav, so the crawler can't find them).
+ * The empty entry prerenders bare `/docs`, whose load redirects to the first
+ * visible doc — without it that redirect would only exist by accident, when
+ * some doc happens to link to `/docs`.
  */
 export function entries() {
-  return docs.map((doc) => ({ slug: doc.route.replace(/^docs\//, '') }));
+  return [
+    { slug: '' },
+    ...docs.map((doc) => ({ slug: doc.route.replace(/^docs\//, '') }))
+  ];
 }
 
 export async function load({ params }) {

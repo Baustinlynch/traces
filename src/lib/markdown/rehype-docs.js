@@ -22,7 +22,7 @@ export const handlers = {
   }
 };
 
-const ABSOLUTE_URL = /^https?:\/\/|^\/\//i;
+const ABSOLUTE_URL = /^https?:\/\/|^\/\/|\//i;
 // These headings will be include a link to their hash
 const HEADINGS = ['h2', 'h3', 'h4', 'h5', 'h6'];
 

@@ -11,15 +11,17 @@
     />
     <script>
       // Apply the theme before first paint to avoid a flash of the wrong theme.
-      // Home defaults dark, docs defaults light; an explicit user choice
-      // (persisted in localStorage) wins on every page.
+      // Home defaults dark, the workshop showcase and docs default light; an
+      // explicit user choice (persisted in localStorage) wins on every page.
       (function () {
         var stored = null;
         try {
           stored = localStorage.getItem('traces-theme');
         } catch (e) {}
-        var isDocs = location.pathname.startsWith('/docs') || location.pathname.startsWith('/first-traces');
-        var theme = stored === 'light' || stored === 'dark' ? stored : isDocs ? 'light' : 'dark';
+        var isLightPage = ['/workshops', '/docs', '/first-traces'].some(function (prefix) {
+          return location.pathname.startsWith(prefix);
+        });
+        var theme = stored === 'light' || stored === 'dark' ? stored : isLightPage ? 'light' : 'dark';
         document.documentElement.dataset.theme = theme;
       })();
     </script>

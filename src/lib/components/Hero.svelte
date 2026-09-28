@@ -1,5 +1,8 @@
 <script>
   let { backgroundImage, actions = [] } = $props();
+
+  // Internal links (the /workshops page) stay in the tab; only external ones open a new one.
+  const isExternal = (href) => !href.startsWith('/');
 </script>
 
 <section class="hero" id="top">
@@ -20,7 +23,12 @@
     </p>
     <div class="hero-actions">
       {#each actions as action}
-        <a href={action.href} target="_blank" rel="noopener" class={`btn ${action.variant}`}>{action.label}</a>
+        <a
+          href={action.href}
+          target={isExternal(action.href) ? '_blank' : undefined}
+          rel={isExternal(action.href) ? 'noopener' : undefined}
+          class={`btn ${action.variant}`}>{action.label}</a
+        >
       {/each}
     </div>
   </div>
