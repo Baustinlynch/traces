@@ -32,6 +32,8 @@ SvelteKit 2 (Svelte 5) static site generated with `prerender = true` and deploye
 - **Nav is folder-scoped.** The sidebar and Previous/Next buttons only show docs from the top-level folder (`program`) of the doc you're viewing. Docs in other folders aren't reachable from the nav.
 - **Markdown has custom extensions.** Wikilinks (`[[Page|Alias]]`), callouts (`> [!type]`), task lists (`[ ]`/`[x]`), and image sizing (`![alt](url=200x100)` — no spaces after the URL or the tokenizer breaks). Entry point is `renderMarkdown(markdown, docs)` in `src/lib/markdown/markdown.js`.
 - **No TypeScript.** All source is plain JS/Svelte.
+- **Build id.** `vite.config.js` resolves the build id (`VERCEL_GIT_COMMIT_SHA` → `BUILD_ID` → `git rev-parse --short HEAD` → `dev`) and injects it as the `__BUILD_ID__` global via `define`. Read it only through `src/lib/build.js` (`buildId` / `buildLabel`) — never run `child_process` in a component, it would break the client bundle.
+- **Footer build info.** The Footer renders `buildLabel` in `src/lib/components/Footer.svelte`. The build label is hidden by default and shown when hovering anywhere on the footer. For production builds, the commit hash is a clickable link to the GitHub commit (`https://github.com/Baustinlynch/traces/commit/<hash>`). For dev builds, plain text "dev build" is shown.
 - **Agents.md auto-update.** Agents are to automatically update this file after significant changes are made to the codebase (e.g., new features, architectural changes, or major bug fixes).
 
 ## Adding docs

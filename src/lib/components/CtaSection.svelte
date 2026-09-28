@@ -5,7 +5,7 @@
 <section class="cta" id="apply">
   <div class="cta-inner">
     <img src={logoImage} alt="Traces logo" class="cta-logo" />
-    <h2 class="h2 cta-title">Ready to close the loop?</h2>
+    <h2 class="h2 cta-title">Ready to get started?</h2>
     <p class="cta-sub">
       Open the guide, build something in Wokwi, add your own twist, and ship it. If it's solid,
       we'll grant you the parts to build it for real.
