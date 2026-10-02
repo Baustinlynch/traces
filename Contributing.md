@@ -4,7 +4,7 @@
 
 This document describes the conventions for contributing to the Traces guide. It covers the custom markdown syntax supported by the renderer, how the file structure maps to URLs, and how a workshop card on `/workshops` is configured.
 
-The markdown renderer (`src/lib/markdown/markdown.js`) uses a `unified`/`remark`/`rehype` pipeline (same as workshops.hackclub.com): `remark-parse` → `remark-gfm` → `remark-rehype` → `rehype-raw` → `@mapbox/rehype-prism` → `rehype-stringify`, with custom extensions in `src/lib/markdown/plugins/traces.js`. Output is sanitized with `isomorphic-dompurify`.
+The markdown renderer (`src/lib/markdown/markdown.js`) uses the same rendering pipeline as [workshops.hackclub.com](https://workshops.hackclub.com) (a `unified`/`remark`/`rehype` pipeline : `remark-parse` → `remark-gfm` → `remark-rehype` → `rehype-raw` → `@mapbox/rehype-prism` → `rehype-stringify`), with custom extensions in `src/lib/markdown/plugins/traces.js`. Output is sanitized with `isomorphic-dompurify`.
 
 ## File Structure & URLs
 
@@ -77,13 +77,13 @@ The renderer (`src/lib/markdown/markdown.js`) supports standard markdown plus th
 
 ### Images
 
-Guide images are **screenshots stored on the Hack Club CDN** (`cdn.hackclub.com`) — never commit local copies or reference `/images/...` for doc content. Upload the file to the CDN, then reference the full URL:
+Guide images **should be stored on a CDN**, e.g. (`cdn.hackclub.com`) — never commit local copies or reference `/images/...` for doc content. Upload the file to the CDN, then reference the full URL:
 
 ```markdown
 ![Alt text](https://cdn.hackclub.com/path/to/image.png)
 ```
 
-Local `static/images/` is reserved for site chrome assets (logo, background, section breakers, sticker); doc content always points at the CDN.
+Local `static/images/` is reserved for site chrome assets (logo, background, section breakers, sticker); doc content should always point to the CDN.
 
 **Custom image sizing** is supported using `=WIDTHxHEIGHT` appended directly to the URL with **no spaces**:
 

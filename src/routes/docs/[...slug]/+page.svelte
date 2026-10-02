@@ -19,9 +19,12 @@
   <aside class="docs-sidebar">
     <div class="docs-sidebar-inner">
       <p class="docs-eyebrow">Docs</p>
-      <button type="button" class="theme-toggle" onclick={toggleTheme}>
-        {theme.value === 'dark' ? '☀ Light mode' : '☾ Dark mode'}
-      </button>
+      <div class="docs-sidebar-actions">
+        <a class="docs-home" href="/workshops">← Home</a>
+        <button type="button" class="theme-toggle" onclick={toggleTheme}>
+          {theme.value === 'dark' ? '☀ Light mode' : '☾ Dark mode'}
+        </button>
+      </div>
 
       <nav class="docs-nav" aria-label="Docs navigation">
         {#each visibleDocs as navDoc (navDoc.slug)}

@@ -51,9 +51,17 @@
     --obsidian-border: #3f3f3f;
 }
 
-.theme-toggle {
+.docs-sidebar-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0.75rem 0;
+}
+
+.theme-toggle,
+.docs-home {
     display: inline-block;
-    margin: 0.75rem 0 0.75rem;
+    margin: 0;
     padding: 0.35rem 0.75rem;
     border: 1px solid var(--obsidian-border);
     border-radius: 6px;
@@ -62,10 +70,13 @@
     font-family: var(--font-docs);
     font-size: 0.85rem;
     cursor: pointer;
+    text-decoration: none;
 }
 
-.theme-toggle:hover {
+.theme-toggle:hover,
+.docs-home:hover {
     background: var(--obsidian-hover);
+    text-decoration: none;
 }
 
 * {
